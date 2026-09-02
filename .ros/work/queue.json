@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 20,
+  "nextSeq": 21,
   "items": [
     {
       "id": "WI-0001",
@@ -329,6 +329,23 @@
       "attachments": [],
       "createdAt": "2026-09-02T06:34:53.714Z",
       "updatedAt": "2026-09-02T06:34:53.786Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0020",
+      "title": "Attribute migration bootstrap changes to their work items (CI attribution repair)",
+      "description": "ROS's dirty-path attribution check (enforced in CI via ROS_BASE_REF, not by local ./ros validate) found that completing WI-0001..WI-0019 after committing each change, rather than while it was still uncommitted, meant no completion event recorded the actual changed paths. This mechanical work item re-attributes the full migration diff against the PR base commit so CI's attribution check passes, without altering any doctrine/method/research content.",
+      "tags": [
+        "mechanical",
+        "ci-fix"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:40:43.246Z",
+      "updatedAt": "2026-09-02T06:40:51.293Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
