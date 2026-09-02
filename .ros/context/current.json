@@ -4,7 +4,7 @@
   "repository": "state-directed-engineering",
   "actor": "ros-bootstrap",
   "startedAt": "2026-09-02T05:49:57.408Z",
-  "updatedAt": "2026-09-02T05:49:57.408Z",
+  "updatedAt": "2026-09-02T06:13:57.392Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -20,6 +20,150 @@
       ],
       "updatedAt": "2026-09-02T05:49:57.408Z",
       "completedAt": "2026-09-02T05:49:57.408Z"
+    },
+    {
+      "id": "WI-0001",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:06.630Z"
+    },
+    {
+      "id": "WI-0002",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.301Z"
+    },
+    {
+      "id": "WI-0003",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.430Z"
+    },
+    {
+      "id": "WI-0004",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.556Z"
+    },
+    {
+      "id": "WI-0005",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.681Z"
+    },
+    {
+      "id": "WI-0006",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.813Z"
+    },
+    {
+      "id": "WI-0007",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:55.937Z"
+    },
+    {
+      "id": "WI-0008",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.060Z"
+    },
+    {
+      "id": "WI-0009",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.188Z"
+    },
+    {
+      "id": "WI-0010",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.313Z"
+    },
+    {
+      "id": "WI-0011",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.439Z"
+    },
+    {
+      "id": "WI-0012",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.596Z"
+    },
+    {
+      "id": "WI-0013",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.735Z"
+    },
+    {
+      "id": "WI-0014",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:56.884Z"
+    },
+    {
+      "id": "WI-0015",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:57.013Z"
+    },
+    {
+      "id": "WI-0016",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:57.145Z"
+    },
+    {
+      "id": "WI-0017",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:57.266Z"
+    },
+    {
+      "id": "WI-0018",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:13:57.392Z"
     }
   ]
 }
