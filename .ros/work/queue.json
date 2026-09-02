@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 19,
+  "nextSeq": 20,
   "items": [
     {
       "id": "WI-0001",
@@ -311,6 +311,24 @@
       "attachments": [],
       "createdAt": "2026-09-02T06:13:45.117Z",
       "updatedAt": "2026-09-02T06:13:57.329Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0019",
+      "title": "Execute first engineering validation trial",
+      "description": "Execute (not merely design) the first SDE Construction Method validation on a non-HelixNote project, per method/FIRST-VALIDATION-DESIGN.md. Deliberately left open by the migration bootstrap — do not begin without a dedicated scoping pass (application choice, frozen requirement, baseline).",
+      "tags": [
+        "method",
+        "validation",
+        "future"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:34:53.714Z",
+      "updatedAt": "2026-09-02T06:34:53.786Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
