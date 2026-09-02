@@ -1,0 +1,75 @@
+name: Publish @echelon-foundry/sde to npm
+
+# Publishes distribution/ to npm whenever its package.json version changes
+# on a push to the default branch. Uses npm's Trusted Publishing (OIDC) —
+# no NPM_TOKEN secret is stored in this repository. Authentication is
+# short-lived and issued per run via the `id-token: write` permission
+# below, exchanged automatically by npm CLI >= 11.5.1 for a publish token,
+# provided the package's "Trusted Publisher" settings on npmjs.com name
+# this exact repository, this exact workflow file
+# (.github/workflows/publish.yml), and (if you set one) this environment.
+#
+# PREREQUISITE, one-time, done outside this workflow: npm requires a
+# package to already exist before Trusted Publishing can be configured for
+# it. The very first publish of @echelon-foundry/sde must be done manually
+# (`npm login` + `npm publish --access public` from a local machine) before
+# this workflow's automated runs will have anything to authenticate
+# against. After that one manual publish, configure the Trusted Publisher
+# on the package's npmjs.com settings page, and every subsequent version
+# bump merged here publishes automatically.
+
+on:
+  push:
+    branches:
+      - claude/ros-bootstrap-init-ao9vu4
+    paths:
+      - "distribution/package.json"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: distribution
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      # Trusted Publishing needs npm CLI >= 11.5.1; Node 22's bundled npm
+      # may be older, so pin an npm known to support it explicitly rather
+      # than trusting whatever ships with the runner's Node version.
+      - run: npm install -g npm@^11.5.1
+
+      - run: npm run build
+      - run: npm test
+
+      - name: Determine whether the package version changed
+        id: version-check
+        run: |
+          LOCAL_VERSION="$(node -p "require('./package.json').version")"
+          PUBLISHED_VERSION="$(npm view @echelon-foundry/sde version 2>/dev/null || echo "")"
+          echo "local=$LOCAL_VERSION" >> "$GITHUB_OUTPUT"
+          echo "published=$PUBLISHED_VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$LOCAL_VERSION" = "$PUBLISHED_VERSION" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish
+        if: steps.version-check.outputs.changed == 'true'
+        run: npm publish --access public
+
+      - name: Skip (version unchanged)
+        if: steps.version-check.outputs.changed == 'false'
+        run: |
+          echo "package.json version (${{ steps.version-check.outputs.local }}) matches the version already on npm; nothing to publish."
