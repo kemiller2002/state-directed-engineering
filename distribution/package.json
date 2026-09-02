@@ -1,0 +1,28 @@
+{
+  "name": "@echelon-foundry/sde",
+  "version": "0.1.0",
+  "description": "State-Directed Engineering (SDE) execution package installer: init/status/verify/update a versioned .sde/ methodology directory in any repository.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "sde": "./bin/sde.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "dist",
+    "authored",
+    "DISTRIBUTION-MAP.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node src/build.mjs",
+    "pretest": "node src/build.mjs",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

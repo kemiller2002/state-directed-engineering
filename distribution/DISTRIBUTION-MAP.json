@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "description": "Machine-readable mapping from canonical SDE repository sources to the SDE execution package (.sde/) installed into consuming repositories. 'source' paths are relative to the repository root. 'authored' entries have no canonical source in research/, doctrine/, or method/ and are maintained directly under distribution/authored/ as minimal, distribution-specific wrapper content, per the distribution mission's rule against silently inventing methodology.",
+  "methodVersionSource": "method/CONSTRUCTION-METHOD-v0.1.md",
+  "files": [
+    {
+      "source": "method/CONSTRUCTION-METHOD-v0.1.md",
+      "destination": "method/CONSTRUCTION-METHOD.md"
+    },
+    {
+      "source": "method/CHANGE-CLASSIFICATION.md",
+      "destination": "method/CHANGE-CLASSIFICATION.md"
+    },
+    {
+      "source": "method/VERIFICATION-METHOD.md",
+      "destination": "method/VERIFICATION-METHOD.md"
+    },
+    {
+      "source": "method/AGENT-EXECUTION-RULES.md",
+      "destination": "method/AGENT-EXECUTION-RULES.md"
+    },
+    {
+      "source": "doctrine/FOUR-TIER-ARCHITECTURE.md",
+      "destination": "architecture/FOUR-TIER-ARCHITECTURE.md"
+    },
+    {
+      "source": "doctrine/BOUNDARY-PRESERVATION.md",
+      "destination": "architecture/BOUNDARY-PRESERVATION.md"
+    },
+    {
+      "source": "doctrine/GLOSSARY.md",
+      "destination": "reference/GLOSSARY.md"
+    },
+    {
+      "source": "method/ENGINEERING-METRICS.md",
+      "destination": "reference/ENGINEERING-METRICS.md"
+    },
+    {
+      "source": "templates/sde/execution-log.md",
+      "destination": "templates/execution-log.md"
+    },
+    {
+      "source": "templates/sde/completion-report.md",
+      "destination": "templates/completion-report.md"
+    },
+    {
+      "authored": true,
+      "destination": "templates/work-item.md",
+      "reason": "No canonical equivalent exists: the canonical SDE repository deliberately does not define a work-item format of its own, because ROS already owns work-item management there (see docs/work-protocol.md). A consuming project may not have ROS installed, so a minimal, generic, distribution-specific work-item template is authored directly for standalone use instead of copying ROS's own schema."
+    }
+  ]
+}

@@ -22,4 +22,5 @@
 | WI-0017 | Migration audit | complete | migration, audit | high |
 | WI-0018 | First engineering validation design (not executed) | complete | method, validation, future | medium |
 | WI-0019 | Execute first engineering validation trial | ready | method, validation, future | medium |
-| WI-0020 | Attribute migration bootstrap changes to their work items (CI attribution repair) | ready | mechanical, ci-fix | high |
+| WI-0020 | Attribute migration bootstrap changes to their work items (CI attribution repair) | complete | mechanical, ci-fix | high |
+| WI-0021 | Build SDE distribution and project bootstrap system (@echelon-foundry/sde) | ready | distribution, cli, packaging | high |
