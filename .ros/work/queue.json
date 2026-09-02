@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 25,
+  "nextSeq": 26,
   "items": [
     {
       "id": "WI-0001",
@@ -416,6 +416,24 @@
       "attachments": [],
       "createdAt": "2026-09-02T19:49:53.548Z",
       "updatedAt": "2026-09-02T19:50:27.854Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0025",
+      "title": "Fix npm trusted-publishing package metadata",
+      "description": "Add the repository metadata required for npm OIDC provenance verification, normalize the CLI bin mapping rejected by npm publish, and validate @echelon-foundry/sde 1.0.1 for retry.",
+      "tags": [
+        "distribution",
+        "release",
+        "ci"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T20:09:18.271Z",
+      "updatedAt": "2026-09-02T20:09:22.081Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

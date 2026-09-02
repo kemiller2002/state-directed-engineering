@@ -3,12 +3,20 @@
   "version": "1.0.1",
   "description": "State-Directed Engineering (SDE) execution package installer: init/status/verify/update a versioned .sde/ methodology directory in any repository.",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kemiller2002/state-directed-engineering.git",
+    "directory": "distribution"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "engines": {
     "node": ">=18"
   },
   "bin": {
-    "sde": "./bin/sde.mjs"
+    "sde": "bin/sde.mjs"
   },
   "files": [
     "bin",
