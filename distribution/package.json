@@ -1,6 +1,6 @@
 {
   "name": "@echelon-foundry/sde",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "State-Directed Engineering (SDE) execution package installer: init/status/verify/update a versioned .sde/ methodology directory in any repository.",
   "license": "UNLICENSED",
   "type": "module",
