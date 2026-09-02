@@ -1,6 +1,354 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 1,
-  "items": []
+  "nextSeq": 21,
+  "items": [
+    {
+      "id": "WI-0001",
+      "title": "SDE bootstrap: inventory State Programming research in HelixNote",
+      "description": "Systematic inventory of HelixNote repository research artifacts (State Programming, Four-Tier architecture, boundary preservation, Experiments 1-3) to establish provenance for SDE migration.",
+      "tags": [
+        "migration",
+        "inventory"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:12:54.658Z",
+      "updatedAt": "2026-09-02T06:13:06.568Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0002",
+      "title": "Experiment 1 evidence consolidation",
+      "description": "Consolidate HelixNote Experiment 1 (Observed-Value Boundary Amplification, MDR 66.7%, BCA 4.0) into an SDE evidence record with full provenance.",
+      "tags": [
+        "migration",
+        "evidence",
+        "experiment-1"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.042Z",
+      "updatedAt": "2026-09-02T06:13:55.236Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0003",
+      "title": "Experiment 2 evidence consolidation",
+      "description": "Consolidate HelixNote Experiment 2 (Boundary Authority hardening, Target A-D, MDR 100%, BCA 4.0 unchanged, residual no-op finding) into an SDE evidence record with full provenance.",
+      "tags": [
+        "migration",
+        "evidence",
+        "experiment-2"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.111Z",
+      "updatedAt": "2026-09-02T06:13:55.364Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0004",
+      "title": "Corrected Experiment 3 evidence consolidation",
+      "description": "Consolidate the corrected HelixNote Experiment 3 (commit 8ac05fd, agent-cost-comparison-v3) into an SDE evidence record, using corrected figures only (76 log entries, 2.1x ratio, incomplete Condition B telemetry, 4.0 BCA third replication).",
+      "tags": [
+        "migration",
+        "evidence",
+        "experiment-3"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.179Z",
+      "updatedAt": "2026-09-02T06:13:55.494Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0005",
+      "title": "Four-Tier doctrine consolidation",
+      "description": "Establish doctrine/FOUR-TIER-ARCHITECTURE.md as the canonical SDE statement of the Four-Tier model, citing HelixNote's Four-Tier Conformance Audit and State-System Pilot Report.",
+      "tags": [
+        "migration",
+        "doctrine",
+        "four-tier"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.244Z",
+      "updatedAt": "2026-09-02T06:13:55.617Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0006",
+      "title": "Boundary Preservation doctrine consolidation",
+      "description": "Establish doctrine/BOUNDARY-PRESERVATION.md, citing HelixNote's Semantic Boundary Investigation (commit a7639d8) for failure classes, three-contract model, and wire contract rule.",
+      "tags": [
+        "migration",
+        "doctrine",
+        "boundary"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.318Z",
+      "updatedAt": "2026-09-02T06:13:55.747Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0007",
+      "title": "Research registry normalization (evidence/hypothesis/theory)",
+      "description": "Create EV-/HY-/TH-/DF- records under research/ for migrated State Programming findings and run ./ros registry build so generated registries reflect them.",
+      "tags": [
+        "migration",
+        "registry"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.387Z",
+      "updatedAt": "2026-09-02T06:13:55.873Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0008",
+      "title": "Evidence-to-engineering map",
+      "description": "Create doctrine/EVIDENCE-TO-ENGINEERING-MAP.md mapping each SDE engineering rule to its evidence state (supported/contradicted/open) per mission working principle.",
+      "tags": [
+        "doctrine",
+        "traceability"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.451Z",
+      "updatedAt": "2026-09-02T06:13:55.998Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0009",
+      "title": "SDE glossary",
+      "description": "Create doctrine/GLOSSARY.md defining State Programming and State-Directed Engineering terms consistently.",
+      "tags": [
+        "doctrine",
+        "glossary"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.525Z",
+      "updatedAt": "2026-09-02T06:13:56.124Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0010",
+      "title": "Construction Method v0.1",
+      "description": "Scaffold method/CONSTRUCTION-METHOD-v0.1.md (provisional workflow: requirement through stop) from Experiment 1-3 evidence.",
+      "tags": [
+        "method",
+        "construction-method"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.595Z",
+      "updatedAt": "2026-09-02T06:13:56.249Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0011",
+      "title": "Change Classification",
+      "description": "Create method/CHANGE-CLASSIFICATION.md defining Semantic/Boundary/Mechanical-Propagation/Presentation change classes and fast-path vs full-path handling.",
+      "tags": [
+        "method",
+        "change-classification"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.660Z",
+      "updatedAt": "2026-09-02T06:13:56.373Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0012",
+      "title": "Verification Method",
+      "description": "Create method/VERIFICATION-METHOD.md mapping failure classes to earliest reliable detection layer (compiler/architecture/contract/persistence/behavioral/runtime/uncertainty).",
+      "tags": [
+        "method",
+        "verification"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.724Z",
+      "updatedAt": "2026-09-02T06:13:56.515Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0013",
+      "title": "Agent Execution Rules",
+      "description": "Create method/AGENT-EXECUTION-RULES.md operationalizing the construction method for autonomous coding agents, including the mechanical-feedback-before-search rule from Experiment 3.",
+      "tags": [
+        "method",
+        "agent-rules"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.791Z",
+      "updatedAt": "2026-09-02T06:13:56.661Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0014",
+      "title": "Engineering Metrics",
+      "description": "Create method/ENGINEERING-METRICS.md distinguishing routine engineering metrics from research-only metrics, and self-report vs harness-telemetry evidence classes.",
+      "tags": [
+        "method",
+        "metrics"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.854Z",
+      "updatedAt": "2026-09-02T06:13:56.819Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0015",
+      "title": "SDE templates",
+      "description": "Add templates/sde/ (work-item, execution-log, completion-report, engineering-trial-report) reusing ROS template conventions.",
+      "tags": [
+        "templates",
+        "method"
+      ],
+      "priority": "low",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.922Z",
+      "updatedAt": "2026-09-02T06:13:56.943Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0016",
+      "title": "Chronology / history",
+      "description": "Create research/CHRONOLOGY.md recording dated State Programming and SDE bootstrap milestones from git history.",
+      "tags": [
+        "migration",
+        "chronology"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:44.989Z",
+      "updatedAt": "2026-09-02T06:13:57.075Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0017",
+      "title": "Migration audit",
+      "description": "Independently verify provenance, Experiment 3 accuracy, no research mutation, supersession marking, doctrine confidence, ROS integrity, git integrity, chronology and traceability before declaring the bootstrap complete.",
+      "tags": [
+        "migration",
+        "audit"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:45.051Z",
+      "updatedAt": "2026-09-02T06:13:57.206Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0018",
+      "title": "First engineering validation design (not executed)",
+      "description": "Design (do not execute) the first SDE Construction Method validation trial on a new, non-HelixNote application.",
+      "tags": [
+        "method",
+        "validation",
+        "future"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:13:45.117Z",
+      "updatedAt": "2026-09-02T06:13:57.329Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0019",
+      "title": "Execute first engineering validation trial",
+      "description": "Execute (not merely design) the first SDE Construction Method validation on a non-HelixNote project, per method/FIRST-VALIDATION-DESIGN.md. Deliberately left open by the migration bootstrap — do not begin without a dedicated scoping pass (application choice, frozen requirement, baseline).",
+      "tags": [
+        "method",
+        "validation",
+        "future"
+      ],
+      "priority": "medium",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:34:53.714Z",
+      "updatedAt": "2026-09-02T06:34:53.786Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0020",
+      "title": "Attribute migration bootstrap changes to their work items (CI attribution repair)",
+      "description": "ROS's dirty-path attribution check (enforced in CI via ROS_BASE_REF, not by local ./ros validate) found that completing WI-0001..WI-0019 after committing each change, rather than while it was still uncommitted, meant no completion event recorded the actual changed paths. This mechanical work item re-attributes the full migration diff against the PR base commit so CI's attribution check passes, without altering any doctrine/method/research content.",
+      "tags": [
+        "mechanical",
+        "ci-fix"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T06:40:43.246Z",
+      "updatedAt": "2026-09-02T06:40:51.293Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    }
+  ]
 }

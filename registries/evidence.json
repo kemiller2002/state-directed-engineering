@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "collection_date": "2026-09-02",
+    "created": "2026-09-02",
+    "id": "EV-HN-2026-0001",
+    "method": "direct repository read of committed documents and project structure on the HelixNote main branch",
+    "observation_type": "direct-observation",
+    "path": "research/evidence/EV-HN-2026-0001--four-tier-and-boundary-architectural-layering.md",
+    "source_branch": "main",
+    "source_commit": "211462a90efb8c37b267d01362a44b0a8f9fbcaa",
+    "source_paths": [
+      "docs/state-system/HELIXNOTE-FOUR-TIER-CONFORMANCE-AUDIT.md",
+      "docs/state-system/HELIXNOTE-STATE-SYSTEM-PILOT-REPORT.md",
+      "docs/state-system/README.md",
+      "domain/HelixNote.Semantic/ (project structure)"
+    ],
+    "source_repository": "kemiller2002/helix-note-application",
+    "status": "accepted",
+    "tags": [
+      "four-tier",
+      "architecture",
+      "boundary",
+      "helixnote",
+      "migration"
+    ],
+    "title": "HelixNote architectural layering (semantic core / hosts / orchestration) and its Four-Tier State-System Model audit",
+    "type": "evidence",
+    "updated": "2026-09-02"
+  },
+  {
+    "collection_date": "2026-09-02",
+    "created": "2026-09-02",
+    "id": "EV-HN-2026-0002",
+    "method": "direct repository read of the committed document via git show at the named commit",
+    "observation_type": "direct-observation",
+    "path": "research/evidence/EV-HN-2026-0002--semantic-boundary-investigation.md",
+    "source_branch": "experiment/boundary-authority-v1 (and experiment/observed-value-boundary-amplification, experiment/agent-cost-comparison-v3 — same file, same commit, reachable from all three)",
+    "source_commit": "a7639d88cc958c022712ca1363e0a955a30ed8bf",
+    "source_paths": [
+      "docs/state-system/HELIXNOTE-SEMANTIC-BOUNDARY-INVESTIGATION.md"
+    ],
+    "source_repository": "kemiller2002/helix-note-application",
+    "status": "accepted",
+    "tags": [
+      "boundary",
+      "wire-contract",
+      "representation-collapse",
+      "three-contract-model",
+      "helixnote",
+      "migration"
+    ],
+    "title": "HelixNote Semantic Boundary Investigation — failure classes, three-contract model, wire contract findings",
+    "type": "evidence",
+    "updated": "2026-09-02"
+  },
+  {
+    "baseline_sha": "182e0e22b07123a08c9c47ee4b96ca571a7ff4c7",
+    "baseline_tag": "state-programming-boundary-baseline-v1",
+    "collection_date": "2026-09-02",
+    "completion_date_observed": "2026-09-01 18:24:42 UTC (commit timestamp)",
+    "created": "2026-09-02",
+    "id": "EV-HN-2026-0003",
+    "method": "direct repository read of the committed experiment report via git show at the named commit",
+    "observation_type": "direct-observation (report is itself a first-person experimental record produced by the executing session, re-verified against committed diffs within the same report)",
+    "path": "research/evidence/EV-HN-2026-0003--experiment-1-boundary-amplification.md",
+    "related_evidence": [
+      "EV-HN-2026-0002"
+    ],
+    "source_branch": "experiment/observed-value-boundary-amplification",
+    "source_commit": "a8d5a4fb81b8eebef84386e3a4bed80b0554835b",
+    "source_paths": [
+      "docs/state-system/HELIXNOTE-EXPERIMENT-1-OBSERVED-VALUE-BOUNDARY-AMPLIFICATION.md"
+    ],
+    "source_repository": "kemiller2002/helix-note-application",
+    "source_tag": "state-programming-observed-value-experiment-v1 (local only; remote tag push rejected HTTP 403)",
+    "status": "accepted",
+    "tags": [
+      "experiment-1",
+      "mdr",
+      "bca",
+      "boundary",
+      "helixnote",
+      "migration"
+    ],
+    "title": "HelixNote Controlled Experiment 1 — new semantic case / boundary amplification (baseline architecture)",
+    "type": "evidence",
+    "updated": "2026-09-02"
+  },
+  {
+    "collection_date": "2026-09-02",
+    "completion_date_observed": "2026-09-01 20:40:25 UTC (commit timestamp)",
+    "created": "2026-09-02",
+    "id": "EV-HN-2026-0004",
+    "method": "direct repository read of the committed experiment report and design document via git show at the named commit",
+    "observation_type": "direct-observation",
+    "path": "research/evidence/EV-HN-2026-0004--experiment-2-boundary-authority.md",
+    "related_evidence": [
+      "EV-HN-2026-0002",
+      "EV-HN-2026-0003"
+    ],
+    "source_branch": "experiment/boundary-authority-v1",
+    "source_commit": "9733156 (97331562b718aa35483e20a37d6a04524f0fce20)",
+    "source_paths": [
+      "docs/state-system/experiment-2-report.md",
+      "docs/state-system/boundary-authority-design.md",
+      "docs/state-system/boundary-authority-proofs.md",
+      "docs/state-system/experiment-comparison.json"
+    ],
+    "source_repository": "kemiller2002/helix-note-application",
+    "status": "accepted",
+    "tags": [
+      "experiment-2",
+      "mdr",
+      "bca",
+      "boundary-authority",
+      "target-a-d",
+      "helixnote",
+      "migration"
+    ],
+    "title": "HelixNote Controlled Experiment 2 — boundary authority hardening and mechanical discovery",
+    "type": "evidence",
+    "updated": "2026-09-02"
+  },
+  {
+    "collection_date": "2026-09-02",
+    "completion_date_observed": "2026-09-02 00:25:50 UTC (commit timestamp of the correction itself; original draft report committed 2026-09-01 as commit 39bfa64, now SUPERSEDED by this record per the corrections below)",
+    "created": "2026-09-02",
+    "id": "EV-HN-2026-0005",
+    "method": "direct repository read of the committed, corrected experiment report via git show at commit 8ac05fd (the authoritative, corrected state per this migration's explicit mandate)",
+    "observation_type": "direct-observation, including harness-level telemetry captured by the orchestrating session's own tool-spawn infrastructure (distinct evidence class from either agent's self-report)",
+    "path": "research/evidence/EV-HN-2026-0005--experiment-3-corrected-agent-cost.md",
+    "related_evidence": [
+      "EV-HN-2026-0002",
+      "EV-HN-2026-0003",
+      "EV-HN-2026-0004"
+    ],
+    "source_branch": "experiment/agent-cost-comparison-v3",
+    "source_commit": "8ac05fd25252fe9c8b43c4864978e31ca7b16bc1",
+    "source_paths": [
+      "docs/state-system/experiment-3-report.md",
+      "docs/state-system/experiment-3-results.json",
+      "docs/state-system/experiment-3-comparison.json",
+      "docs/state-system/experiment-3-mission.md",
+      "docs/state-system/experiment-3-predictions.md",
+      "docs/state-system/experiment-3-metrics-schema.json"
+    ],
+    "source_repository": "kemiller2002/helix-note-application",
+    "status": "accepted",
+    "supersedes_within_source_repo": "commit 39bfa64's uncorrected report (not an SDE artifact; a HelixNote-internal correction, preserved in HelixNote's own git history, not rewritten)",
+    "tags": [
+      "experiment-3",
+      "mdr",
+      "bca",
+      "agent-cost",
+      "mechanical-discovery",
+      "helixnote",
+      "migration",
+      "authoritative"
+    ],
+    "title": "HelixNote Controlled Experiment 3 (CORRECTED) — agent reasoning cost under mechanical boundary hardening",
+    "type": "evidence",
+    "updated": "2026-09-02"
+  }
+]

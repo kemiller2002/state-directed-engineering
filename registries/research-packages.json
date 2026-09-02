@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "author_agent": "claude-sonnet-5 (Claude Code)",
+    "completion": {
+      "estimate": 1,
+      "state": "complete"
+    },
+    "confidence": {
+      "estimate": 0.6,
+      "label": "medium",
+      "rationale": "Strong, replicated evidence for several specific claims (BCA=4.0 x3, present-but-inert-arm miss x2); genuinely open questions remain (token/cost reduction, method-as-a-whole validation) and are preserved as open, not resolved by this REP."
+    },
+    "created": "2026-09-02",
+    "discipline": [
+      "software-engineering-methodology",
+      "programming-language-theory"
+    ],
+    "id": "RP-SDE-2026-0001",
+    "keywords": [
+      "four-tier",
+      "boundary-preservation",
+      "mechanical-discovery-rate",
+      "boundary-change-amplification",
+      "agent-cost"
+    ],
+    "path": "research/packages/RP-SDE-2026-0001--state-programming-to-sde-migration.md",
+    "priority": "high",
+    "related_documents": [
+      "doctrine/STATE-PROGRAMMING.md",
+      "doctrine/STATE-DIRECTED-ENGINEERING.md",
+      "doctrine/FOUR-TIER-ARCHITECTURE.md",
+      "doctrine/BOUNDARY-PRESERVATION.md",
+      "doctrine/EVIDENCE-TO-ENGINEERING-MAP.md",
+      "doctrine/CONTRADICTIONS-AND-DEPRECATED.md",
+      "method/CONSTRUCTION-METHOD-v0.1.md",
+      "research/migration/STATE-PROGRAMMING-TO-SDE-MIGRATION-MANIFEST.md"
+    ],
+    "related_projects": [
+      "state-directed-engineering",
+      "helix-note-application"
+    ],
+    "research_area": "state-directed-engineering",
+    "status": "canonical",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "migration",
+      "state-programming",
+      "sde",
+      "bootstrap"
+    ],
+    "title": "State Programming research consolidation and State-Directed Engineering v0.1 bootstrap",
+    "updated": "2026-09-02",
+    "version": "1.0.0"
+  }
+]

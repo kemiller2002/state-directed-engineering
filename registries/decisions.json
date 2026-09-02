@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "created": "2026-09-02",
+    "id": "DF-SDE-2026-0001",
+    "path": "research/decisions/DF-SDE-2026-0001--adopt-sde-name-and-separate-from-state-programming.md",
+    "status": "accepted",
+    "tags": [
+      "governance",
+      "naming",
+      "scope"
+    ],
+    "title": "Adopt State-Directed Engineering as the engineering methodology, distinct from State Programming",
+    "type": "decision-record",
+    "updated": "2026-09-02"
+  },
+  {
+    "created": "2026-09-02",
+    "id": "DF-SDE-2026-0002",
+    "path": "research/decisions/DF-SDE-2026-0002--corrected-experiment-3-is-authoritative.md",
+    "status": "accepted",
+    "tags": [
+      "governance",
+      "experiment-3",
+      "supersession"
+    ],
+    "title": "Corrected Experiment 3 (commit 8ac05fd) is authoritative over any earlier draft or transition summary",
+    "type": "decision-record",
+    "updated": "2026-09-02"
+  },
+  {
+    "created": "2026-09-02",
+    "id": "DF-SDE-2026-0003",
+    "path": "research/decisions/DF-SDE-2026-0003--defer-boundary-amplification-optimization.md",
+    "status": "accepted",
+    "tags": [
+      "governance",
+      "bca",
+      "scope"
+    ],
+    "title": "Defer solving the 4.0 Boundary Change Amplification finding during this migration",
+    "type": "decision-record",
+    "updated": "2026-09-02"
+  }
+]

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "created": "2026-09-02",
+    "id": "JR-SDE-2026-0001",
+    "path": "research/journals/JR-SDE-2026-0001--sde-bootstrap-migration-journal.md",
+    "status": "accepted",
+    "tags": [
+      "journal",
+      "migration",
+      "bootstrap"
+    ],
+    "title": "SDE bootstrap migration journal",
+    "type": "journal",
+    "updated": "2026-09-02"
+  }
+]

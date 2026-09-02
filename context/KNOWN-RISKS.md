@@ -3,7 +3,10 @@
 | Risk | Likelihood | Impact | Mitigation | Owner |
 |---|---|---|---|---|
 | Process overhead exceeds decision value | Medium | High | Measure time and rework; use artifact thresholds | Unassigned |
-| “Communication Engineering” is treated as validated before evidence exists | Medium | High | Keep boundary claims provisional and comparative | Unassigned |
-| Sensitive communication data enters repository artifacts | Medium | High | Define data classes and use synthetic fixtures until reviewed | Unassigned |
+| SDE is treated as a validated engineering methodology before independent (non-HelixNote) evidence exists | High | High | `doctrine/STATE-DIRECTED-ENGINEERING.md` and `method/CONSTRUCTION-METHOD-v0.1.md` are explicitly labeled "Provisional / Engineering Validation"; `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md` gates every rule's confidence class | Unassigned |
+| A future contributor conflates HelixNote's own "Four-Tier State-System Model" (state-category taxonomy) with SDE's Four-Tier Architecture (layering doctrine) | Medium | Medium | Explicit disambiguation recorded in `EV-HN-2026-0001`, `TH-SDE-2026-0001`, and `doctrine/CONTRADICTIONS-AND-DEPRECATED.md` | Unassigned |
+| Experiment 3's incomplete Condition B telemetry is cited as a confirmed cost reduction in a future summary | Medium | High | `EV-HN-2026-0005` and `doctrine/CONTRADICTIONS-AND-DEPRECATED.md` both carry the caveat explicitly; `method/ENGINEERING-METRICS.md` requires every cost figure to be labeled by evidence class | Unassigned |
+| HelixNote experiment branches (unmerged into `main`) are deleted, breaking this migration's citations | Low-Medium | Medium | Flagged in `research/migration/STATE-PROGRAMMING-TO-SDE-MIGRATION-MANIFEST.md`'s "Provenance risk"; SDE's own evidence records preserve the content independently even if the source branches disappear | Unassigned |
 | Documentation becomes detached from implementation | Medium | High | Link decisions to tests and refresh handoffs at milestones | Unassigned |
-| Baseline is selected after results are known | Medium | Medium | Register baseline and measures before the first slice | Unassigned |
+| Baseline is selected after results are known | Medium | Medium | Register baseline and measures before the first slice; `method/FIRST-VALIDATION-DESIGN.md` requires a frozen, pre-registered requirement | Unassigned |
+| The 4.0 Boundary Change Amplification finding is treated as solved by future doctrine without new evidence | Low | High | `DF-SDE-2026-0003` explicitly defers this; `doctrine/CONTRADICTIONS-AND-DEPRECATED.md` records the contradiction of "hardening reduces BCA" | Unassigned |

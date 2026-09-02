@@ -4,7 +4,7 @@
   "repository": "state-directed-engineering",
   "actor": "ros-bootstrap",
   "startedAt": "2026-09-02T05:49:57.408Z",
-  "updatedAt": "2026-09-02T05:49:57.408Z",
+  "updatedAt": "2026-09-02T06:40:51.504Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -20,6 +20,285 @@
       ],
       "updatedAt": "2026-09-02T05:49:57.408Z",
       "completedAt": "2026-09-02T05:49:57.408Z"
+    },
+    {
+      "id": "WI-0001",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/journals/JR-SDE-2026-0001--sde-bootstrap-migration-journal.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.192Z",
+      "completedAt": "2026-09-02T06:34:32.192Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0002",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/evidence/EV-HN-2026-0003--experiment-1-boundary-amplification.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.265Z",
+      "completedAt": "2026-09-02T06:34:32.265Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0003",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/evidence/EV-HN-2026-0004--experiment-2-boundary-authority.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.340Z",
+      "completedAt": "2026-09-02T06:34:32.340Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0004",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/evidence/EV-HN-2026-0005--experiment-3-corrected-agent-cost.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.410Z",
+      "completedAt": "2026-09-02T06:34:32.410Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0005",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "doctrine/FOUR-TIER-ARCHITECTURE.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.477Z",
+      "completedAt": "2026-09-02T06:34:32.477Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0006",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "doctrine/BOUNDARY-PRESERVATION.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.548Z",
+      "completedAt": "2026-09-02T06:34:32.548Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0007",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/packages/RP-SDE-2026-0001--state-programming-to-sde-migration.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.616Z",
+      "completedAt": "2026-09-02T06:34:32.616Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0008",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "doctrine/EVIDENCE-TO-ENGINEERING-MAP.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.685Z",
+      "completedAt": "2026-09-02T06:34:32.685Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0009",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "doctrine/GLOSSARY.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.752Z",
+      "completedAt": "2026-09-02T06:34:32.752Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0010",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/CONSTRUCTION-METHOD-v0.1.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.819Z",
+      "completedAt": "2026-09-02T06:34:32.819Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0011",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/CHANGE-CLASSIFICATION.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.891Z",
+      "completedAt": "2026-09-02T06:34:32.891Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0012",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/VERIFICATION-METHOD.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:32.961Z",
+      "completedAt": "2026-09-02T06:34:32.961Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0013",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/AGENT-EXECUTION-RULES.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:33.029Z",
+      "completedAt": "2026-09-02T06:34:33.029Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0014",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/ENGINEERING-METRICS.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:33.106Z",
+      "completedAt": "2026-09-02T06:34:33.106Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0015",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "templates/sde/execution-log.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:33.188Z",
+      "completedAt": "2026-09-02T06:34:33.188Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0016",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/CHRONOLOGY.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:33.264Z",
+      "completedAt": "2026-09-02T06:34:33.264Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0017",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/migration/MIGRATION-AUDIT.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:41.374Z",
+      "completedAt": "2026-09-02T06:34:41.374Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0018",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "method/FIRST-VALIDATION-DESIGN.md"
+        }
+      ],
+      "updatedAt": "2026-09-02T06:34:33.341Z",
+      "completedAt": "2026-09-02T06:34:33.341Z",
+      "conclusion": "complete"
+    },
+    {
+      "id": "WI-0020",
+      "type": "mechanical",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [],
+      "updatedAt": "2026-09-02T06:40:51.504Z",
+      "completedAt": "2026-09-02T06:40:51.504Z"
     }
   ]
 }
