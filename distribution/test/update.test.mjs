@@ -16,12 +16,13 @@ test("update upgrades an older, unmodified installation deterministically", () =
     const before = readManifest(installDirFor(project));
     assert.equal(before.manifest.sdeVersion, "0.0.1");
 
+    const currentVersion = readManifest(packagedDir()).manifest.sdeVersion;
     const update = runUpdate(project, packagedDir());
     assert.equal(update.exitCode, 0);
-    assert.match(update.lines[0], /0\.0\.1 -> v0\.1\.0/);
+    assert.equal(update.lines[0], `SDE updated: v0.0.1 -> v${currentVersion}.`);
 
     const after = readManifest(installDirFor(project));
-    assert.equal(after.manifest.sdeVersion, "0.1.0");
+    assert.equal(after.manifest.sdeVersion, currentVersion);
   } finally {
     cleanup(project, olderFixture);
   }

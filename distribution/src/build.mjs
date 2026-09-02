@@ -31,15 +31,68 @@ function toMajorMinor(version) {
   return `${match[1]}.${match[2]}`;
 }
 
+// Appends "-dirty" when the canonical source tree has uncommitted changes
+// (tracked or untracked), so sourceRevision never claims a commit SHA whose
+// actual committed content differs from what was just packaged. Without
+// this, a build taken from a dirty tree would record a real, resolvable
+// SHA that silently does not correspond to the packaged bytes — exactly
+// the kind of false provenance a controlled engineering trial cannot
+// tolerate (see distribution/README.md's traceability claim).
 function readSourceRevision() {
   try {
-    return execFileSync("git", ["-C", REPO_ROOT, "rev-parse", "HEAD"], {
+    const sha = execFileSync("git", ["-C", REPO_ROOT, "rev-parse", "HEAD"], {
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"]
     }).trim();
+    const dirty = execFileSync("git", ["-C", REPO_ROOT, "status", "--porcelain"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"]
+    }).trim().length > 0;
+    return dirty ? `${sha}-dirty` : sha;
   } catch {
     return null;
   }
+}
+
+// Canonical doctrine/method documents cite `related_documents` (and, in
+// prose, research evidence IDs) meant for a reader of the full canonical
+// repository. Copied verbatim into the execution package, those
+// `related_documents` entries become dangling: they name either a
+// canonical path that was renamed on the way into the package (e.g.
+// `doctrine/FOUR-TIER-ARCHITECTURE.md` -> `architecture/FOUR-TIER-ARCHITECTURE.md`)
+// or a canonical path deliberately excluded from distribution
+// (`research/...`). This rewrites each `related_documents` entry to its
+// distributed destination when the target is itself distributed, and
+// drops the entry otherwise, so a fresh agent following a documented
+// cross-reference inside `.sde/` never hits a file that was never
+// installed. Inline prose citations (e.g. "[EV-HN-2026-0005]") are left
+// alone — they read as evidence citations, not as navigable links, and
+// rewriting freeform prose safely is out of this build step's scope.
+function rewriteRelatedDocuments(text, sourceToDestination) {
+  const frontMatterMatch = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+  if (!frontMatterMatch) return text;
+  const original = frontMatterMatch[1];
+  const lines = original.split(/\r?\n/);
+  const keyIndex = lines.findIndex((line) => /^related_documents:\s*$/.test(line));
+  if (keyIndex === -1) return text;
+
+  let end = keyIndex + 1;
+  const kept = [];
+  while (end < lines.length) {
+    const itemMatch = /^\s*-\s*(\S.*)$/.exec(lines[end]);
+    if (!itemMatch) break;
+    const target = itemMatch[1].trim();
+    const rewritten = sourceToDestination.get(target);
+    if (rewritten) kept.push(`  - ${rewritten}`);
+    end += 1;
+  }
+
+  const replacement = kept.length > 0 ? ["related_documents:", ...kept] : ["related_documents: []"];
+  const newFrontMatter = [...lines.slice(0, keyIndex), ...replacement, ...lines.slice(end)].join("\n");
+
+  const blockStart = frontMatterMatch.index + frontMatterMatch[0].indexOf(original);
+  const blockEnd = blockStart + original.length;
+  return text.slice(0, blockStart) + newFrontMatter + text.slice(blockEnd);
 }
 
 function loadDistributionMap(mapPath = path.join(DISTRIBUTION_DIR, "DISTRIBUTION-MAP.json")) {
@@ -87,6 +140,8 @@ export function build({ outputDir = DIST_OUTPUT_DIR, mapPath } = {}) {
   removeTree(outputDir);
   fs.mkdirSync(outputDir, { recursive: true });
 
+  const sourceToDestination = new Map(map.files.filter((entry) => !entry.authored).map((entry) => [entry.source, entry.destination]));
+
   for (const entry of map.files) {
     const destPath = path.join(outputDir, entry.destination);
     if (entry.authored) {
@@ -94,6 +149,11 @@ export function build({ outputDir = DIST_OUTPUT_DIR, mapPath } = {}) {
       copyFileInto(authoredPath, destPath);
     } else {
       copyFileInto(path.join(REPO_ROOT, entry.source), destPath);
+      if (destPath.endsWith(".md")) {
+        const original = fs.readFileSync(destPath, "utf8");
+        const rewritten = rewriteRelatedDocuments(original, sourceToDestination);
+        if (rewritten !== original) fs.writeFileSync(destPath, rewritten);
+      }
     }
   }
 

@@ -1,6 +1,10 @@
 {
   "name": "@echelon-foundry/sde",
+<<<<<<< HEAD
+  "version": "0.1.1",
+=======
   "version": "1.0.0",
+>>>>>>> refs/remotes/origin/claude/ros-bootstrap-init-ao9vu4
   "description": "State-Directed Engineering (SDE) execution package installer: init/status/verify/update a versioned .sde/ methodology directory in any repository.",
   "license": "UNLICENSED",
   "type": "module",
