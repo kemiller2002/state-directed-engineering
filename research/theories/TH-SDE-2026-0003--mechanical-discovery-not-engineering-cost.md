@@ -3,7 +3,9 @@ id: TH-SDE-2026-0003
 title: Mechanical Discovery Rate is not equivalent to engineering cost
 status: supported
 type: theory
-confidence: {label: medium, estimate: 0.60, rationale: "Directly demonstrated in one controlled trial (Experiment 3); the two proxies moved in opposite directions, which is strong evidence they are not the same construct, but a single trial cannot establish how often this divergence occurs."}
+confidence: medium
+confidence_estimate: 0.60
+confidence_rationale: "Directly demonstrated in one controlled trial (Experiment 3); the two proxies moved in opposite directions, which is strong evidence they are not the same construct, but a single trial cannot establish how often this divergence occurs."
 evidence_for: [EV-HN-2026-0005]
 related_documents: [doctrine/STATE-DIRECTED-ENGINEERING.md, doctrine/EVIDENCE-TO-ENGINEERING-MAP.md]
 created: 2026-09-02

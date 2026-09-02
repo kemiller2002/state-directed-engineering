@@ -3,7 +3,9 @@ id: TH-SDE-2026-0004
 title: Detection optimization vs. construction optimization
 status: supported
 type: theory
-confidence: {label: high, estimate: 0.70, rationale: "Directly demonstrated by three independent BCA replications at an identical value (4.0), showing detection improved while volume did not."}
+confidence: high
+confidence_estimate: 0.70
+confidence_rationale: "Directly demonstrated by three independent BCA replications at an identical value (4.0), showing detection improved while volume did not."
 evidence_for: [EV-HN-2026-0003, EV-HN-2026-0004, EV-HN-2026-0005]
 related_documents: [doctrine/EVIDENCE-TO-ENGINEERING-MAP.md, doctrine/CONTRADICTIONS-AND-DEPRECATED.md]
 created: 2026-09-02

@@ -3,7 +3,9 @@ id: TH-SDE-2026-0002
 title: Boundary Preservation (representation collapse and uncoordinated duplication as distinct failure classes)
 status: supported
 type: theory
-confidence: {label: high, estimate: 0.75, rationale: "Directly demonstrated by four built-and-executed experiments across five languages; the unifying single-mechanism alternative was tested and refuted by the same investigation."}
+confidence: high
+confidence_estimate: 0.75
+confidence_rationale: "Directly demonstrated by four built-and-executed experiments across five languages; the unifying single-mechanism alternative was tested and refuted by the same investigation."
 evidence_for: [EV-HN-2026-0002]
 related_documents: [doctrine/BOUNDARY-PRESERVATION.md]
 created: 2026-09-02

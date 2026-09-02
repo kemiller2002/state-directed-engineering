@@ -3,7 +3,9 @@ id: TH-SDE-2026-0001
 title: Four-Tier Architecture (semantic model / transition / orchestration / host)
 status: supported
 type: theory
-confidence: {label: high, estimate: 0.75, rationale: "Grounded in an enforced, real codebase layering (netstandard2.0 isolation, passing architecture check) across multiple hosts, replicated across three experiments' worth of change trials."}
+confidence: high
+confidence_estimate: 0.75
+confidence_rationale: "Grounded in an enforced, real codebase layering (netstandard2.0 isolation, passing architecture check) across multiple hosts, replicated across three experiments' worth of change trials."
 evidence_for: [EV-HN-2026-0001]
 related_documents: [doctrine/FOUR-TIER-ARCHITECTURE.md]
 created: 2026-09-02

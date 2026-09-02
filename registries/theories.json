@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "confidence": "high",
+    "confidence_estimate": 0.75,
+    "confidence_rationale": "Grounded in an enforced, real codebase layering (netstandard2.0 isolation, passing architecture check) across multiple hosts, replicated across three experiments' worth of change trials.",
+    "created": "2026-09-02",
+    "evidence_for": [
+      "EV-HN-2026-0001"
+    ],
+    "id": "TH-SDE-2026-0001",
+    "path": "research/theories/TH-SDE-2026-0001--four-tier-architecture.md",
+    "related_documents": [
+      "doctrine/FOUR-TIER-ARCHITECTURE.md"
+    ],
+    "status": "supported",
+    "tags": [
+      "four-tier",
+      "architecture",
+      "doctrine"
+    ],
+    "title": "Four-Tier Architecture (semantic model / transition / orchestration / host)",
+    "type": "theory",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "high",
+    "confidence_estimate": 0.75,
+    "confidence_rationale": "Directly demonstrated by four built-and-executed experiments across five languages; the unifying single-mechanism alternative was tested and refuted by the same investigation.",
+    "created": "2026-09-02",
+    "evidence_for": [
+      "EV-HN-2026-0002"
+    ],
+    "id": "TH-SDE-2026-0002",
+    "path": "research/theories/TH-SDE-2026-0002--boundary-preservation.md",
+    "related_documents": [
+      "doctrine/BOUNDARY-PRESERVATION.md"
+    ],
+    "status": "supported",
+    "tags": [
+      "boundary",
+      "wire-contract",
+      "doctrine"
+    ],
+    "title": "Boundary Preservation (representation collapse and uncoordinated duplication as distinct failure classes)",
+    "type": "theory",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "medium",
+    "confidence_estimate": 0.6,
+    "confidence_rationale": "Directly demonstrated in one controlled trial (Experiment 3); the two proxies moved in opposite directions, which is strong evidence they are not the same construct, but a single trial cannot establish how often this divergence occurs.",
+    "created": "2026-09-02",
+    "evidence_for": [
+      "EV-HN-2026-0005"
+    ],
+    "id": "TH-SDE-2026-0003",
+    "path": "research/theories/TH-SDE-2026-0003--mechanical-discovery-not-engineering-cost.md",
+    "related_documents": [
+      "doctrine/STATE-DIRECTED-ENGINEERING.md",
+      "doctrine/EVIDENCE-TO-ENGINEERING-MAP.md"
+    ],
+    "status": "supported",
+    "tags": [
+      "mdr",
+      "cost",
+      "experiment-3",
+      "doctrine"
+    ],
+    "title": "Mechanical Discovery Rate is not equivalent to engineering cost",
+    "type": "theory",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "high",
+    "confidence_estimate": 0.7,
+    "confidence_rationale": "Directly demonstrated by three independent BCA replications at an identical value (4.0), showing detection improved while volume did not.",
+    "created": "2026-09-02",
+    "evidence_for": [
+      "EV-HN-2026-0003",
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005"
+    ],
+    "id": "TH-SDE-2026-0004",
+    "path": "research/theories/TH-SDE-2026-0004--detection-vs-construction-optimization.md",
+    "related_documents": [
+      "doctrine/EVIDENCE-TO-ENGINEERING-MAP.md",
+      "doctrine/CONTRADICTIONS-AND-DEPRECATED.md"
+    ],
+    "status": "supported",
+    "tags": [
+      "bca",
+      "detection",
+      "construction",
+      "doctrine"
+    ],
+    "title": "Detection optimization vs. construction optimization",
+    "type": "theory",
+    "updated": "2026-09-02"
+  }
+]

@@ -1,10 +1,10 @@
 ---
 id: HY-SDE-2026-0001
 title: Mechanical boundary hardening reduces agent search/manual-inspection effort
-status: accepted
+status: supported
 type: hypothesis
 disposition: provisionally-accepted
-confidence: {label: medium, estimate: 0.55, rationale: "One controlled A/B trial; large effect on search operations (-63%), no clear effect on unique files inspected."}
+confidence: medium
 source_experiment: EX (see EV-HN-2026-0005)
 evidence_for: [EV-HN-2026-0005]
 evidence_against: []

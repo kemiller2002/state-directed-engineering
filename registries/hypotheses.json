@@ -1,1 +1,132 @@
-[]
+[
+  {
+    "confidence": "medium",
+    "created": "2026-09-02",
+    "disposition": "provisionally-accepted",
+    "evidence_against": [],
+    "evidence_for": [
+      "EV-HN-2026-0005"
+    ],
+    "id": "HY-SDE-2026-0001",
+    "path": "research/hypotheses/HY-SDE-2026-0001--hardening-reduces-search-effort.md",
+    "source_experiment": "EX (see EV-HN-2026-0005)",
+    "status": "supported",
+    "tags": [
+      "experiment-3",
+      "search",
+      "mechanical-discovery"
+    ],
+    "title": "Mechanical boundary hardening reduces agent search/manual-inspection effort",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "medium",
+    "created": "2026-09-02",
+    "disposition": "provisionally-accepted",
+    "evidence_against": [],
+    "evidence_for": [
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005"
+    ],
+    "id": "HY-SDE-2026-0002",
+    "path": "research/hypotheses/HY-SDE-2026-0002--hardening-reduces-repair-loops.md",
+    "status": "supported",
+    "tags": [
+      "experiment-3",
+      "repair-loops"
+    ],
+    "title": "Hardening reduces repair loops and verification failures",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "high",
+    "created": "2026-09-02",
+    "disposition": "rejected",
+    "evidence_against": [
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005"
+    ],
+    "evidence_for": [],
+    "id": "HY-SDE-2026-0003",
+    "path": "research/hypotheses/HY-SDE-2026-0003--hardening-reduces-silent-omissions.md",
+    "status": "rejected",
+    "tags": [
+      "experiment-2",
+      "experiment-3",
+      "no-op",
+      "silent-omission"
+    ],
+    "title": "Hardening reduces silent structural omissions",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "high",
+    "created": "2026-09-02",
+    "disposition": "rejected",
+    "evidence_against": [
+      "EV-HN-2026-0003",
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005"
+    ],
+    "evidence_for": [],
+    "id": "HY-SDE-2026-0004",
+    "path": "research/hypotheses/HY-SDE-2026-0004--hardening-reduces-boundary-volume.md",
+    "status": "rejected",
+    "tags": [
+      "experiment-1",
+      "experiment-2",
+      "experiment-3",
+      "bca"
+    ],
+    "title": "Hardening reduces total required boundary changes",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "high",
+    "created": "2026-09-02",
+    "disposition": "rejected",
+    "evidence_against": [
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005"
+    ],
+    "evidence_for": [],
+    "id": "HY-SDE-2026-0005",
+    "path": "research/hypotheses/HY-SDE-2026-0005--hardening-eliminates-semantic-errors.md",
+    "status": "rejected",
+    "tags": [
+      "experiment-2",
+      "experiment-3",
+      "no-op",
+      "semantic-error"
+    ],
+    "title": "Hardening eliminates semantic implementation errors",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  },
+  {
+    "confidence": "medium",
+    "created": "2026-09-02",
+    "disposition": "unresolved",
+    "evidence_against": [
+      "EV-HN-2026-0005"
+    ],
+    "evidence_for": [
+      "EV-HN-2026-0005"
+    ],
+    "id": "HY-SDE-2026-0006",
+    "path": "research/hypotheses/HY-SDE-2026-0006--mechanical-feedback-substitutes-for-search.md",
+    "status": "active",
+    "tags": [
+      "experiment-3",
+      "mdr",
+      "agent-strategy"
+    ],
+    "title": "Mechanical feedback can substitute for agent search/inference effort",
+    "type": "hypothesis",
+    "updated": "2026-09-02"
+  }
+]
