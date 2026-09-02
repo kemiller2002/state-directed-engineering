@@ -25,4 +25,5 @@
 | WI-0020 | Attribute migration bootstrap changes to their work items (CI attribution repair) | complete | mechanical, ci-fix | high |
 | WI-0021 | Build SDE distribution and project bootstrap system (@echelon-foundry/sde) | complete | distribution, cli, packaging | high |
 | WI-0022 | Audit SDE distribution and project bootstrap implementation | complete | audit, distribution | high |
-| WI-0023 | Add npm Trusted Publishing workflow and bump SDE package to 1.0.0 | ready | distribution, ci, release | high |
+| WI-0023 | Add npm Trusted Publishing workflow and bump SDE package to 1.0.0 | complete | distribution, ci, release | high |
+| WI-0024 | Repair npm release merge artifact and attribution | active | distribution, release | high |

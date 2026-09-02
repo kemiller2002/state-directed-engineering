@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 24,
+  "nextSeq": 25,
   "items": [
     {
       "id": "WI-0001",
@@ -399,6 +399,23 @@
       "attachments": [],
       "createdAt": "2026-09-02T16:11:53.090Z",
       "updatedAt": "2026-09-02T16:11:53.154Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0024",
+      "title": "Repair npm release merge artifact and attribution",
+      "description": "Delete distribution/package.json.orig, an unresolved merge-backup artifact accidentally committed by merge 540fdc2; preserve and attribute the already-present distribution/package.json 1.0.1 release bump; restore ROS validation.",
+      "tags": [
+        "distribution",
+        "release"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T19:49:53.548Z",
+      "updatedAt": "2026-09-02T19:50:27.854Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
