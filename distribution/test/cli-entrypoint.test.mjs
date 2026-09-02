@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -31,6 +32,26 @@ test("the real CLI binary can init, verify, and report status end to end", () =>
     assert.match(status.stdout, /SDE project status/);
   } finally {
     cleanup(project);
+  }
+});
+
+test("a managed file replaced by a symlink fails cleanly instead of crashing with a stack trace", () => {
+  const project = makeTempDir();
+  const outsideTarget = makeTempDir();
+  try {
+    runCli(["init"], project);
+    fs.writeFileSync(path.join(outsideTarget, "target.txt"), "outside content");
+    fs.rmSync(path.join(project, ".sde", "method", "CONSTRUCTION-METHOD.md"));
+    fs.symlinkSync(path.join(outsideTarget, "target.txt"), path.join(project, ".sde", "method", "CONSTRUCTION-METHOD.md"));
+
+    const verify = runCli(["verify"], project);
+    assert.equal(verify.exitCode, 1);
+    assert.match(verify.stderr, /refusing to manage a symlink/);
+    assert.doesNotMatch(verify.stderr, /at file:\/\//, "must not leak a raw Node stack trace");
+
+    assert.equal(fs.readFileSync(path.join(outsideTarget, "target.txt"), "utf8"), "outside content");
+  } finally {
+    cleanup(project, outsideTarget);
   }
 });
 

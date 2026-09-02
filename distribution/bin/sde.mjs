@@ -43,7 +43,18 @@ function main(argv) {
     console.error("Usage: sde <init|status|verify|update>");
     return 2;
   }
-  const { exitCode, lines } = handler();
+  // Any command that touches an existing .sde/ installation can encounter
+  // filesystem states this tool deliberately refuses to handle (a managed
+  // path replaced by a symlink, a permission error, and similar) — those
+  // are reported as a clean command failure, never a raw stack trace, so
+  // exit-code-only automation and a human both get an actionable message.
+  let outcome;
+  try {
+    outcome = handler();
+  } catch (error) {
+    outcome = { exitCode: 1, lines: [`sde ${command} failed: ${error.message}`] };
+  }
+  const { exitCode, lines } = outcome;
   const stream = exitCode === 0 ? console.log : console.error;
   for (const line of lines) stream(line);
   return exitCode;

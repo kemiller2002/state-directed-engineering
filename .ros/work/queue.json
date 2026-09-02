@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 22,
+  "nextSeq": 23,
   "items": [
     {
       "id": "WI-0001",
@@ -364,6 +364,23 @@
       "attachments": [],
       "createdAt": "2026-09-02T07:08:02.446Z",
       "updatedAt": "2026-09-02T07:08:19.291Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0022",
+      "title": "Audit SDE distribution and project bootstrap implementation",
+      "description": "Independent audit of the @echelon-foundry/sde distribution system: canonical-source authority, distribution mapping, determinism, manifest integrity, package contents, dependency count, init/status/verify/update behavior, path/symlink safety, ROS boundary, language neutrality, fresh-agent usability, and trust model. Fixes applied for confirmed defects found during the audit.",
+      "tags": [
+        "audit",
+        "distribution"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T11:37:50.353Z",
+      "updatedAt": "2026-09-02T11:37:50.446Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
