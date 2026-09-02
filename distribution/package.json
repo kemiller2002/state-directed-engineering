@@ -2,13 +2,13 @@
   "name": "@echelon-foundry/sde",
   "version": "1.0.0",
   "description": "State-Directed Engineering (SDE) execution package installer: init/status/verify/update a versioned .sde/ methodology directory in any repository.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=18"
   },
   "bin": {
-    "sde": "./bin/sde.mjs"
+    "sde": "bin/sde.mjs"
   },
   "files": [
     "bin",
@@ -16,7 +16,8 @@
     "dist",
     "authored",
     "DISTRIBUTION-MAP.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "node src/build.mjs",
