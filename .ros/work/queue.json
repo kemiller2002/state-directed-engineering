@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 23,
+  "nextSeq": 24,
   "items": [
     {
       "id": "WI-0001",
@@ -381,6 +381,24 @@
       "attachments": [],
       "createdAt": "2026-09-02T11:37:50.353Z",
       "updatedAt": "2026-09-02T11:37:50.446Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0023",
+      "title": "Add npm Trusted Publishing workflow and bump SDE package to 1.0.0",
+      "description": "Adds .github/workflows/publish.yml (npm Trusted Publishing/OIDC, no stored NPM_TOKEN) that publishes @echelon-foundry/sde on a package.json version change pushed to the default branch. Bumps the package version from 0.1.0 to 1.0.0 as the designated first public release, per explicit user request.",
+      "tags": [
+        "distribution",
+        "ci",
+        "release"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T16:11:53.090Z",
+      "updatedAt": "2026-09-02T16:11:53.154Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

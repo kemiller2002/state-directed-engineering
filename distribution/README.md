@@ -47,7 +47,7 @@ and which version of SDE is installed.
 ```
 .sde/
 ├── README.md              orientation for humans and agents
-├── VERSION                the installed SDE package version, e.g. "0.1.0"
+├── VERSION                the installed SDE package version, e.g. "1.0.0"
 ├── MANIFEST.json           installation manifest: version, source
 │                           revision, and a sha256 per managed file
 ├── method/
@@ -115,7 +115,7 @@ changes when a human deliberately runs `update`.
 Three version concepts are tracked independently, since they do not
 necessarily move together:
 
-- **npm package version** (`package.json` `version`, e.g. `0.1.0`) — this
+- **npm package version** (`package.json` `version`, e.g. `1.0.0`) — this
   CLI's own release.
 - **method version** (`MANIFEST.json` `methodVersion`, e.g. `0.1`) — the
   construction method's own version, read from its canonical document's
@@ -199,6 +199,24 @@ materially, that requires a new package version and a new build, not a
 silent regeneration of an already-published version's contents. This
 matters for reproducible engineering trials that cite a specific installed
 SDE version.
+
+### Automated publishing
+
+`.github/workflows/publish.yml` publishes to npm whenever
+`distribution/package.json`'s `version` changes on a push to the default
+branch (it no-ops, rather than erroring, if the version already matches
+what's on npm — so an unrelated change to `distribution/` doesn't trigger
+a re-publish attempt). It uses npm's **Trusted Publishing** (OIDC): no
+`NPM_TOKEN` is stored in this repository; the workflow's `id-token: write`
+permission is exchanged by npm CLI >= 11.5.1 for a short-lived publish
+credential, authorized because the package's Trusted Publisher settings on
+npmjs.com name this exact repository and workflow file.
+
+npm requires a package to already exist before Trusted Publishing can be
+configured for it, so the very first publish of a new package name must
+still be done manually (`npm login` + `npm publish --access public` from
+a machine with publish rights) — only after that does the automated
+workflow have a Trusted Publisher configuration to authenticate against.
 
 ## How this differs from ROS
 
