@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 24,
+  "nextSeq": 25,
   "items": [
     {
       "id": "WI-0001",
@@ -399,6 +399,23 @@
       "attachments": [],
       "createdAt": "2026-09-02T16:11:53.090Z",
       "updatedAt": "2026-09-02T16:11:53.154Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0024",
+      "title": "Add MIT license and fix npm publish packaging defects (bin path, exec bit)",
+      "description": "npm publish --dry-run against distribution/ surfaced two packaging defects: the package.json bin path had a redundant ./ prefix that npm silently auto-corrects with a publish-time warning, and bin/sde.mjs was not marked executable in git so the packed tarball shipped it without the exec bit. Also adds an MIT LICENSE (repo root and distribution/, listed in package.json files[]) since the package was previously UNLICENSED.",
+      "tags": [
+        "distribution",
+        "packaging"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T19:25:26.023Z",
+      "updatedAt": "2026-09-02T19:25:32.416Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
