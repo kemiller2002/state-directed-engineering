@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 21,
+  "nextSeq": 22,
   "items": [
     {
       "id": "WI-0001",
@@ -346,6 +346,24 @@
       "attachments": [],
       "createdAt": "2026-09-02T06:40:43.246Z",
       "updatedAt": "2026-09-02T06:40:51.293Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0021",
+      "title": "Build SDE distribution and project bootstrap system (@echelon-foundry/sde)",
+      "description": "Deterministic packaging step and zero-dependency npx CLI (init/status/verify/update) distributing a curated SDE execution package (.sde/) to consuming repositories, independent of ROS.",
+      "tags": [
+        "distribution",
+        "cli",
+        "packaging"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-02T07:08:02.446Z",
+      "updatedAt": "2026-09-02T07:08:19.291Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null
