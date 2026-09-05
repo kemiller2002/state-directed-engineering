@@ -1,0 +1,1101 @@
+# Agent Navigation and Context Discovery Contract
+
+## Status
+
+**Proposed architectural contract**
+
+This document extends the state-system architecture with an explicit contract for how AI coding agents discover, load, and expand implementation context before making changes.
+
+It should be read alongside the **State-System Structural Locality Contract**.
+
+---
+
+# 1. Why This Contract Exists
+
+Modern coding agents generally do not load an entire nontrivial repository into active model context before performing work.
+
+Instead, they typically:
+
+1. inspect repository structure,
+2. search for relevant files and symbols,
+3. read a subset of likely code,
+4. follow imports, references, tests, and compiler feedback,
+5. expand context iteratively,
+6. edit once they believe sufficient context has been acquired.
+
+This works surprisingly well, but it remains largely **probabilistic discovery**.
+
+The agent must infer:
+
+- where a feature lives,
+- which files define its state,
+- which files define its legal transitions,
+- which tests verify it,
+- which dependencies matter,
+- which code is safe to modify,
+- and when it has read enough to act safely.
+
+For small systems this may be acceptable.
+
+For large systems, it creates a new architectural risk:
+
+> **The correctness of a software change may depend not only on the code model, but on whether the agent successfully discovers the correct semantic context before editing.**
+
+The architecture should therefore not force an agent to reconstruct the repository's meaning from search results on every task.
+
+It should provide a deterministic path from:
+
+```text
+task
+  ↓
+semantic feature
+  ↓
+declared context
+  ↓
+legal modification surface
+  ↓
+verification
+```
+
+This document defines that path.
+
+---
+
+# 2. Core Principle
+
+The state-system architecture originally constrained:
+
+1. what states may exist,
+2. what transitions may occur,
+3. what capabilities may perform those transitions.
+
+The architecture must now also constrain:
+
+4. **what information must be understood before a change is safely made.**
+
+The resulting principle is:
+
+> **Make illegal states unrepresentable, illegal transitions unavailable, and the information required to perform a legal change bounded, explicit, and discoverable.**
+
+The final word is critical.
+
+A codebase may be modular yet still difficult for an agent to navigate.
+
+Small files alone do not solve the problem.
+
+The correct files must be **easy to identify before broad exploration begins**.
+
+---
+
+# 3. Architectural Objective
+
+For a normal feature-level task, an agent should not need to discover the architecture of the entire repository.
+
+It should be able to answer the following quickly and deterministically:
+
+```text
+Where does this feature live?
+
+What state does it own?
+
+What transitions does it own?
+
+What invariants govern those transitions?
+
+What capabilities can invoke them?
+
+What interfaces enter or leave the feature?
+
+Which tests verify the feature?
+
+Which dependencies are permitted?
+
+Which files may normally be modified?
+
+What evidence would justify crossing the boundary?
+```
+
+If the repository cannot answer these questions locally, then the software may have a **context-discovery defect**, even if it is otherwise technically modular.
+
+---
+
+# 4. Repository Navigation Model
+
+The preferred discovery model is:
+
+```text
+Repository Entry Point
+        ↓
+Repository Map
+        ↓
+Task Classification
+        ↓
+Feature / Semantic Boundary
+        ↓
+Feature Manifest
+        ↓
+Local State + Transitions + Contracts + Tests
+        ↓
+Declared Dependencies Only As Needed
+        ↓
+Modification
+        ↓
+Mechanical Verification
+```
+
+This should replace the weaker default:
+
+```text
+Task
+  ↓
+Global search
+  ↓
+Open promising files
+  ↓
+Infer architecture
+  ↓
+Follow references
+  ↓
+Open more files
+  ↓
+Guess whether context is sufficient
+  ↓
+Edit
+```
+
+The second process remains available as a fallback.
+
+It should not be the normal path.
+
+---
+
+# 5. Local-First Discovery Rule
+
+Agents should follow a **local-first discovery policy**.
+
+## Rule
+
+> Begin with the declared semantic boundary responsible for the task. Expand outward only when the local boundary does not contain enough information to make or verify the requested change.
+
+This means that broad repository exploration should be an escalation mechanism, not the starting strategy.
+
+A preferred agent workflow is:
+
+```text
+1. Identify the likely feature.
+2. Read the feature manifest.
+3. Read its declared state.
+4. Read its transition logic.
+5. Read its contracts/interfaces.
+6. Read its associated tests.
+7. Determine whether the task is locally solvable.
+8. Follow declared dependencies if additional context is required.
+9. Perform repository-wide discovery only if declared context proves insufficient.
+10. Record why expansion was necessary.
+```
+
+---
+
+# 6. Feature Manifest
+
+Each meaningful bounded feature should provide an agent-readable manifest.
+
+The exact representation may be Markdown, YAML, JSON, or another low-complexity format.
+
+The important requirement is semantic completeness.
+
+Example:
+
+```yaml
+feature: Procedure
+
+purpose:
+  - Owns procedure lifecycle and procedure-related business rules.
+
+owns:
+  state:
+    - Domain/Procedure.fs
+
+  transitions:
+    - Domain/ProcedureTransitions.fs
+
+  capabilities:
+    - Domain/ProcedureCapabilities.fs
+
+interfaces:
+  inbound:
+    - Api/ProcedureEndpoints.fs
+
+  outbound:
+    - Persistence/IProcedureStore.fs
+    - Audit/IAuditWriter.fs
+
+tests:
+  unit:
+    - Tests/ProcedureDomainTests.fs
+    - Tests/ProcedureTransitionTests.fs
+
+  integration:
+    - Tests/ProcedureApiTests.fs
+
+dependencies:
+  allowed:
+    - Patient
+    - Audit
+    - Persistence
+
+modification_boundary:
+  normal:
+    - features/procedure/**
+
+  escalation_required:
+    - shared/**
+    - infrastructure/**
+    - features/*
+
+invariants:
+  - docs/procedure-invariants.md
+```
+
+This turns repository navigation into a contract.
+
+The agent no longer needs to infer from filenames alone.
+
+---
+
+# 7. Repository Map
+
+The repository should also contain a small top-level map that answers:
+
+```text
+What are the major semantic areas?
+
+Where does each area live?
+
+Which manifest describes each one?
+```
+
+Example:
+
+```text
+features/
+  procedure/
+  patient/
+  scheduling/
+  billing/
+  audit/
+```
+
+with a repository-level map such as:
+
+```markdown
+# Repository Semantic Map
+
+- Procedure → `features/procedure/manifest.md`
+- Patient → `features/patient/manifest.md`
+- Scheduling → `features/scheduling/manifest.md`
+- Billing → `features/billing/manifest.md`
+- Audit → `features/audit/manifest.md`
+```
+
+The goal is not documentation volume.
+
+The goal is **routing certainty**.
+
+---
+
+# 8. Nested Agent Instructions
+
+Agent-specific instruction files such as `AGENTS.md`, repository rules, or equivalent mechanisms should reinforce semantic boundaries.
+
+A repository-level instruction can establish global policy.
+
+A nested instruction can establish local policy.
+
+Example:
+
+```text
+repository/
+  AGENTS.md
+
+  features/
+    procedure/
+      AGENTS.md
+      manifest.md
+      ...
+```
+
+The repository-level instruction may say:
+
+```text
+Before modifying code:
+
+1. Identify the semantic feature responsible for the task.
+2. Read that feature's manifest.
+3. Prefer local files over repository-wide search.
+4. Follow declared dependencies before performing broad exploration.
+5. Treat undeclared cross-feature dependencies as architecture findings.
+6. Explain any cross-boundary modification before making it.
+```
+
+The feature-level instruction may say:
+
+```text
+This directory owns Procedure state and transitions.
+
+Normal Procedure changes should remain within this boundary.
+
+Do not modify Billing, Scheduling, or Patient internals to implement
+Procedure behavior unless the current feature contract is insufficient.
+
+If additional state is required from another feature, use its declared
+public contract rather than internal state.
+```
+
+---
+
+# 9. Context Surface
+
+The **Context Surface** of a change is the complete semantic material an agent must understand to safely perform and verify that change.
+
+It may include:
+
+```text
+state
++
+transitions
++
+invariants
++
+interfaces
++
+tests
++
+direct dependencies
+```
+
+Conceptually:
+
+```text
+CS(change) =
+  state
++ transitions
++ invariants
++ interfaces
++ tests
++ required direct dependencies
+```
+
+The objective is not necessarily to minimize raw lines of code.
+
+The objective is to keep the required semantic context **bounded and coherent**.
+
+A 1,500-line feature that is internally complete may be better than five 300-line files whose behavior depends on eight unrelated modules.
+
+---
+
+# 10. Declared Context vs. Actual Context
+
+The manifest defines the **Declared Context Surface**.
+
+Execution reveals the **Actual Context Surface**.
+
+These should be close.
+
+If a feature claims to be independent but a routine change requires reading forty files across six features, then the declared boundary is misleading.
+
+That gives the architecture a new measurable property.
+
+---
+
+# 11. Context Expansion Ratio
+
+Define:
+
+```text
+Context Expansion Ratio (CER)
+
+CER =
+Actual Context Surface
+──────────────────────
+Declared Context Surface
+```
+
+Interpretation:
+
+```text
+CER ≈ 1
+```
+
+is desirable.
+
+It means the architecture accurately predicts the context required for a change.
+
+A consistently high CER indicates one or more of:
+
+- hidden coupling,
+- missing contracts,
+- poorly located shared behavior,
+- false feature boundaries,
+- implicit dependencies,
+- inadequate tests,
+- or excessive centralization.
+
+CER should not be treated as an absolute quality score.
+
+Some changes are legitimately cross-cutting.
+
+The important signal is **unexpected expansion**.
+
+---
+
+# 12. Discovery Expansion
+
+A second useful metric is **Discovery Expansion**.
+
+Example definition:
+
+```text
+DE = number of files read outside the declared feature boundary
+```
+
+This may also be tracked by category:
+
+```text
+Declared feature reads
+Declared dependency reads
+Undeclared dependency reads
+Unrelated reads
+Cross-boundary edits
+```
+
+The goal is not zero external reads.
+
+The goal is that external reads are:
+
+- justified,
+- explainable,
+- and usually predicted by the manifest.
+
+---
+
+# 13. Discovery Cost Metrics
+
+Future AI-development experiments should record discovery behavior, not only implementation outcomes.
+
+Useful measurements include:
+
+```text
+Files inspected before first edit
+
+Files inspected total
+
+Search operations
+
+Symbol searches
+
+Repository-wide searches
+
+Declared-boundary files read
+
+Declared dependencies read
+
+Undeclared dependencies read
+
+Unrelated files read
+
+Cross-boundary edits
+
+Tokens consumed before first edit
+
+Tokens consumed before successful verification
+
+Compiler/build failures
+
+Test failures
+
+Repair loops
+
+Time-to-first-valid-change
+
+Time-to-verified-change
+```
+
+These metrics help distinguish:
+
+```text
+generation cost
+```
+
+from:
+
+```text
+context acquisition cost
+```
+
+That distinction is important.
+
+An architecture may reduce coding complexity while leaving discovery cost unchanged.
+
+The proposed architecture should reduce both.
+
+---
+
+# 14. Escalation Contract
+
+An agent must be allowed to leave the local boundary when necessary.
+
+Preventing expansion entirely would make the architecture brittle.
+
+However, expansion should be explicit.
+
+A recommended escalation contract is:
+
+```text
+IF local context is insufficient:
+
+    identify the missing information
+
+    inspect declared dependency first
+
+IF declared dependency is insufficient:
+
+    perform targeted broader search
+
+IF undeclared dependency is discovered:
+
+    record architectural leakage
+
+IF implementation requires cross-boundary modification:
+
+    record:
+        - why it is required
+        - which contract is insufficient
+        - which boundary is being crossed
+        - whether the boundary should be redesigned
+```
+
+This transforms context expansion into useful architectural evidence.
+
+---
+
+# 15. Undeclared Dependencies as Findings
+
+One of the strongest consequences of this approach is that agent difficulty becomes diagnostic.
+
+Suppose:
+
+```text
+Procedure manifest declares:
+
+Procedure → Audit
+Procedure → Persistence
+```
+
+During a Procedure change, the agent discovers that correct behavior requires modifying:
+
+```text
+Scheduling.fs
+```
+
+There are several possibilities:
+
+1. Scheduling is legitimately part of the operation and the manifest is incomplete.
+2. Procedure depends on Scheduling through an undocumented contract.
+3. Procedure is leaking into Scheduling internals.
+4. Shared behavior has been placed in the wrong component.
+5. The feature boundary itself is wrong.
+
+Under the proposed architecture, this is not just an inconvenience.
+
+It is an **architectural observation**.
+
+The agent should record it.
+
+---
+
+# 16. Context Discovery Must Be Separate From File Size
+
+The architecture must not collapse into a simplistic rule such as:
+
+> Files must remain below 500 lines.
+
+File size is only a proxy.
+
+The real question is:
+
+> **How much semantic material must be loaded to understand and safely modify this behavior?**
+
+A small file can have an enormous Context Surface if it depends heavily on global state.
+
+A larger file may have a small Context Surface if it contains a complete, isolated subsystem.
+
+Therefore:
+
+```text
+Physical size ≠ Semantic context size
+```
+
+The desired optimization target is semantic locality.
+
+---
+
+# 17. Relationship to Structural Locality
+
+The Structural Locality Contract asks:
+
+> Is behavior organized into coherent, bounded implementation units?
+
+The Agent Navigation Contract asks:
+
+> Can an agent reliably find the correct bounded unit without reconstructing the entire system?
+
+Both are required.
+
+Conceptually:
+
+```text
+Semantic Boundary
+      ↓
+State Boundary
+      ↓
+Capability Boundary
+      ↓
+Structural Boundary
+      ↓
+Navigation Boundary
+      ↓
+Test Boundary
+      ↓
+Agent Context Boundary
+```
+
+A failure at any layer can increase AI-maintenance risk.
+
+---
+
+# 18. Three Dimensions of Constraint
+
+The architecture can now be viewed across three fundamental dimensions.
+
+## 18.1 State Constraint
+
+```text
+What conditions may exist?
+```
+
+Examples:
+
+- discriminated unions,
+- explicit lifecycle states,
+- impossible-state prevention,
+- evidence-bearing states.
+
+## 18.2 Action Constraint
+
+```text
+What actions may occur?
+```
+
+Examples:
+
+- explicit transitions,
+- capabilities,
+- guards,
+- authorization,
+- external-effect handling.
+
+## 18.3 Context Constraint
+
+```text
+What information must be considered to safely perform an action?
+```
+
+Examples:
+
+- feature manifests,
+- declared dependencies,
+- local tests,
+- explicit interfaces,
+- bounded semantic modules.
+
+These three dimensions reinforce one another.
+
+---
+
+# 19. AI Development Cost Model
+
+AI coding cost should not be modeled as code generation alone.
+
+A more realistic approximation is:
+
+```text
+AI Development Cost
+=
+Discovery
++ Context Acquisition
++ Reasoning
++ Generation
++ Verification
++ Repair
+```
+
+Traditional AI coding benchmarks often emphasize generation.
+
+Real repository work spends substantial effort on:
+
+```text
+finding
+reading
+disambiguating
+following references
+understanding conventions
+recovering from missing context
+re-reading after context loss
+```
+
+A state-constrained architecture with deterministic navigation may reduce this entire upstream cost.
+
+---
+
+# 20. The Bolero Client Example
+
+The approximately 7,000-line Bolero Elmish client demonstrates the issue.
+
+The problem is not merely that the file is long.
+
+The problem is that adding a new screen may require understanding a large centralized structure containing:
+
+```text
+Model
+Msg
+update
+routing
+view behavior
+shared state
+screen interactions
+```
+
+An agent cannot safely isolate the new behavior without understanding a broad portion of that central state system.
+
+If the UI were decomposed into semantic feature modules, a task could instead route through:
+
+```text
+task
+  ↓
+screen/feature manifest
+  ↓
+local Model
+  ↓
+local Msg
+  ↓
+local update
+  ↓
+local view
+  ↓
+local tests
+```
+
+The Context Surface would be dramatically smaller.
+
+Equally important, it would be obvious **where to start reading**.
+
+---
+
+# 21. Example Feature Structure
+
+A possible F#/Elmish structure:
+
+```text
+features/
+  procedure/
+    manifest.md
+
+    Domain.fs
+    Transitions.fs
+    Capabilities.fs
+
+    Ui/
+      Model.fs
+      Msg.fs
+      Update.fs
+      View.fs
+
+    Api/
+      Contracts.fs
+      Endpoints.fs
+
+    Tests/
+      DomainTests.fs
+      TransitionTests.fs
+      UiUpdateTests.fs
+      ApiIntegrationTests.fs
+```
+
+The top-level application becomes primarily composition:
+
+```text
+App/
+  Model.fs
+  Msg.fs
+  Update.fs
+  Routing.fs
+```
+
+The application shell should not absorb every feature's internal state machine.
+
+---
+
+# 22. Repository-Wide Search as Fallback
+
+Repository-wide search remains valuable.
+
+The architecture should not prohibit:
+
+```text
+grep
+semantic search
+symbol search
+dependency traversal
+compiler-guided discovery
+```
+
+Instead, these become **fallback discovery mechanisms**.
+
+Preferred hierarchy:
+
+```text
+1. Repository semantic map
+2. Feature manifest
+3. Local files
+4. Declared dependencies
+5. Targeted search
+6. Repository-wide search
+```
+
+This reduces stochastic discovery without eliminating flexibility.
+
+---
+
+# 23. Agent Task Protocol
+
+A standard task protocol could require agents to perform the following before editing:
+
+```text
+TASK DISCOVERY
+
+1. Identify semantic feature.
+2. Read repository map if feature is unclear.
+3. Read feature manifest.
+4. Read declared state, transitions, interfaces, and tests.
+5. Record expected modification boundary.
+
+CONTEXT CHECK
+
+6. Determine whether declared context is sufficient.
+7. If not, follow declared dependencies.
+8. If still insufficient, expand discovery.
+9. Record undeclared dependencies.
+
+EXECUTION
+
+10. Make the smallest valid change.
+11. Prefer capability/transition changes over direct state mutation.
+12. Avoid cross-boundary edits unless justified.
+
+VERIFICATION
+
+13. Run local tests.
+14. Run required integration checks.
+15. Record cross-boundary effects.
+16. Record actual discovery/context metrics.
+```
+
+This could eventually become part of the Research Operating System or agent execution policy.
+
+---
+
+# 24. Architectural Smells
+
+The following should be treated as potential warnings.
+
+## Discovery Smells
+
+- Agent must begin with repository-wide grep for routine feature tasks.
+- Feature location cannot be determined from repository structure.
+- Multiple directories appear equally responsible for the same behavior.
+- Tests cannot be located from the feature boundary.
+- Agents repeatedly inspect unrelated files.
+
+## Context Smells
+
+- One routine change requires understanding many unrelated components.
+- Local state depends on large global records.
+- Shared modules contain unrelated domain behavior.
+- UI state is centralized across independent workflows.
+- Feature tests require extensive global setup.
+
+## Boundary Smells
+
+- Cross-feature writes are common.
+- Internal feature types are imported widely.
+- Feature dependencies are undeclared.
+- Modifying one feature routinely requires modifying another.
+- Public contracts do not describe actual coupling.
+
+---
+
+# 25. Research Hypotheses
+
+This contract creates several testable hypotheses.
+
+## Hypothesis A
+
+Repositories with explicit feature manifests will require fewer repository-wide searches before successful code modification.
+
+## Hypothesis B
+
+Semantic feature decomposition will reduce Context Surface compared with centralized state models.
+
+## Hypothesis C
+
+Local-first discovery will reduce tokens consumed before the first correct edit.
+
+## Hypothesis D
+
+Undeclared dependency discovery will correlate with higher repair-loop counts.
+
+## Hypothesis E
+
+Lower Context Expansion Ratio will correlate with lower AI maintenance cost.
+
+## Hypothesis F
+
+Agent navigation contracts will improve correctness even when using the same model and same underlying domain architecture.
+
+---
+
+# 26. Suggested Experiment
+
+A controlled experiment could compare two versions of the same application.
+
+## Version A — Ordinary Repository
+
+```text
+feature code distributed
+minimal navigation documentation
+global search expected
+```
+
+## Version B — Navigation-Constrained Repository
+
+```text
+semantic repository map
+feature manifests
+declared dependencies
+local tests
+agent instructions
+explicit modification boundaries
+```
+
+Give identical agents identical change requests.
+
+Measure:
+
+```text
+search operations
+files opened
+unrelated files opened
+tokens before first edit
+tokens total
+cross-boundary reads
+cross-boundary edits
+build failures
+test failures
+repair loops
+time to valid implementation
+final correctness
+```
+
+This would directly test whether architecture can reduce **context acquisition cost**, independent of code-generation capability.
+
+---
+
+# 27. Practical Initial Standard
+
+Until experiments refine the approach, new state-system projects should follow these defaults.
+
+### Every major feature should have:
+
+- a clear directory boundary,
+- a manifest,
+- explicit state ownership,
+- explicit transition ownership,
+- explicit interfaces,
+- declared dependencies,
+- colocated or easily discoverable tests,
+- a normal modification boundary.
+
+### Every repository should have:
+
+- a semantic repository map,
+- global agent instructions,
+- a local-first discovery rule,
+- an escalation rule for boundary crossing.
+
+### Every agent task should:
+
+- identify its semantic feature before editing,
+- load declared local context first,
+- expand outward only as needed,
+- record undeclared dependencies,
+- verify locally before broad validation.
+
+---
+
+# 28. Broader Architectural Principle
+
+The long-term architecture is no longer merely a state-machine design.
+
+It is an environment designed to reduce ambiguity for both software and the agents that modify it.
+
+The system should constrain:
+
+```text
+WHAT MAY BE TRUE
+    state
+
+WHAT MAY HAPPEN
+    transitions / capabilities
+
+WHO OR WHAT MAY CAUSE IT
+    authority / capability
+
+WHAT MUST BE KNOWN
+    bounded context
+
+WHERE THAT KNOWLEDGE LIVES
+    structural locality
+
+HOW IT IS FOUND
+    navigation contract
+
+HOW IT IS PROVEN
+    tests / evidence / verification
+```
+
+This creates a fundamentally different relationship between architecture and AI development.
+
+Instead of asking an agent to understand an arbitrary repository and then behave correctly, the repository itself helps constrain the agent's reasoning process.
+
+---
+
+# 29. Final Principle
+
+The evolving state-system architecture can now be summarized as:
+
+> **Make illegal states unrepresentable. Make illegal transitions unavailable. Make legal capabilities explicit. Keep the context required for change bounded. Make that context deterministically discoverable. Require evidence when the agent crosses those boundaries.**
+
+The architecture should not merely make correct software easier to execute.
+
+It should make correct software easier to **understand, modify, and verify within bounded agent context**.

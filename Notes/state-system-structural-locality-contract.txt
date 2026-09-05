@@ -1,0 +1,432 @@
+# State-System Structural Locality Contract
+
+## Status
+Architectural extension / research finding
+
+## Purpose
+
+The state-system architecture was originally focused on constraining runtime and domain behavior: make important state explicit, define legal transitions, enforce guards and invariants, require evidence where appropriate, expose capabilities rather than unconstrained mutation, track obligations, and model external effects explicitly.
+
+The Bolero client exposed a second constraint that is just as important for AI-assisted engineering: **the code that implements a bounded state system must itself remain structurally bounded and locally understandable.**
+
+A system can have excellent domain semantics and still become unsafe or expensive for an AI agent to modify if the implementation concentrates too much state, transition logic, presentation behavior, and interaction logic into one large module.
+
+This document records that finding and extends the architecture with explicit structural and context-locality contracts.
+
+---
+
+## 1. Triggering Observation
+
+The Bolero client is implemented as a single Elmish file of approximately 7,000 lines. The file contains a large share of the client-side `Model`, `Msg`, `update`, rendering, routing, and interaction behavior.
+
+When nine additional screens were considered, the underlying schema, domain model, API behavior, persistence behavior, and live end-to-end flows were already implemented and mechanically verified. Extending the UI, however, would have required modifying the central Elmish state and transition structures without being able to reliably hold the full relevant client context or visually verify every interaction against the existing conventions.
+
+The correct engineering decision was therefore to stop at that boundary rather than perform a blind rewrite with a high regression risk.
+
+This was not merely an execution limitation. It revealed an architectural property:
+
+> **Context size is an architectural property.**
+
+If a safe change requires understanding a very large, highly coupled semantic surface, then the architecture has created a maintenance boundary regardless of whether the code compiles or currently behaves correctly.
+
+---
+
+## 2. The Missing Dimension in the State-System Architecture
+
+The existing state-system approach constrains what the software is allowed to mean and do.
+
+Typical contracts include:
+
+- explicit domain states;
+- explicit legal transitions;
+- guards and invariants;
+- evidence requirements;
+- authority and capability checks;
+- obligations representing unresolved work;
+- explicit success, failure, and unknown outcomes for external effects;
+- constrained agent actions rather than unconstrained mutation.
+
+These are **semantic and behavioral contracts**.
+
+They are necessary, but they are not sufficient.
+
+The implementation also needs **structural contracts** governing where state logic is stored, how it is composed, how dependencies cross boundaries, and how much context must be loaded to make a safe change.
+
+Without those contracts, a codebase can preserve the correct semantics while gradually collapsing into giant modules that defeat the locality and constraint advantages the architecture was intended to create.
+
+---
+
+## 3. New Architectural Principle: Semantic Locality
+
+The new principle is:
+
+> **Code that participates in one bounded state system should be colocated, independently understandable, and independently verifiable.**
+
+The goal is not simply smaller files. The goal is a smaller **semantic surface of change**.
+
+A useful rule is:
+
+> **A feature change should require understanding only the state, transitions, capabilities, contracts, tests, and immediate dependencies associated with that feature, plus a small composition boundary.**
+
+This is stronger than a line-count rule. A 300-line file can still be badly coupled, while a 1,200-line bounded feature may be perfectly manageable if its dependencies and responsibilities are explicit.
+
+The architecture should therefore optimize for semantic locality rather than arbitrary file size.
+
+---
+
+## 4. Structural Locality Contracts
+
+### 4.1 Bounded State Ownership
+
+A bounded feature or state component should own its relevant:
+
+- state model;
+- commands/messages/events;
+- transition function or update logic;
+- guards and invariants;
+- capabilities;
+- effect declarations;
+- presentation state where applicable;
+- tests.
+
+Ownership should be clear enough that an agent or developer can identify the authoritative implementation of a feature without reconstructing it from unrelated modules.
+
+### 4.2 Explicit Composition
+
+Top-level application modules should primarily compose bounded components rather than contain the detailed behavior of every component.
+
+A root model or root update function may coordinate features, but it should remain thin. Its role is composition, routing, delegation, and cross-boundary coordination—not accumulation of all feature behavior.
+
+### 4.3 Explicit Cross-Boundary Contracts
+
+One feature should not reach into another feature's internal state arbitrarily.
+
+Cross-feature interaction should occur through explicit interfaces such as:
+
+- commands;
+- domain events;
+- capabilities;
+- typed messages;
+- published read models;
+- effect requests;
+- well-defined composition functions.
+
+This preserves the state boundary in the code structure itself.
+
+### 4.4 Directional Dependencies
+
+Dependencies between bounded state components should be explicit and directional.
+
+Circular semantic dependencies should be treated as an architectural warning because they increase the amount of code that must be understood simultaneously.
+
+### 4.5 Local Verification
+
+A bounded state component should be independently testable wherever practical.
+
+Tests should make its legal behavior mechanically visible without requiring the entire application to run.
+
+This may include:
+
+- transition tests;
+- invariant tests;
+- capability tests;
+- effect-contract tests;
+- view-model or presentation-transition tests;
+- integration tests at explicit boundaries.
+
+### 4.6 No Semantic Dumping Grounds
+
+Shared modules should contain genuinely shared semantics, not miscellaneous logic extracted merely to reduce file length.
+
+Moving code into a `Helpers`, `Common`, or `Utils` module does not create locality if every feature still depends on it and its meaning remains ambiguous.
+
+### 4.7 Presentation State Is Still State
+
+Presentation and interaction layers should follow the same principles.
+
+An Elmish, Redux, MVU, or similar client architecture should not be exempt simply because the state is "UI state." If a client feature has meaningful states and transitions, it should be bounded and composed like any other state system.
+
+For an Elmish application, a preferred direction is feature-level composition where each substantial feature owns its own `Model`, `Msg`, `update`, and view behavior, and the root program composes those features.
+
+---
+
+## 5. File Size Is a Signal, Not the Contract
+
+Large files often indicate excessive semantic concentration, but file size alone should not become the governing metric.
+
+An arbitrary rule such as "no file over 500 lines" can make an architecture worse by scattering one semantic unit across many files while preserving all of the original coupling.
+
+For example, splitting one monolithic feature into:
+
+- `Model.fs`;
+- `Messages.fs`;
+- `Update.fs`;
+- `View.fs`;
+
+may improve navigation, but it does not materially reduce context requirements if all four files still form one giant, globally coupled state system.
+
+The meaningful question is:
+
+> **How much semantic context is required to safely make and verify one change?**
+
+Physical decomposition is valuable only when it follows semantic decomposition.
+
+---
+
+## 6. Agent Context as an Architectural Boundary
+
+AI-assisted development introduces an architectural constraint that conventional modularity metrics do not fully capture.
+
+To safely modify a bounded component, an agent should ideally be able to load and reason over:
+
+1. the component's state;
+2. its legal transitions;
+3. its invariants;
+4. its capabilities and authority rules;
+5. its effect contracts;
+6. its tests;
+7. its immediate dependencies;
+8. the small composition boundary that connects it to the rest of the system.
+
+If a normal feature change requires loading large portions of unrelated application behavior, the component is not sufficiently bounded for reliable AI maintenance.
+
+This leads to a proposed architectural rule:
+
+> **The complete semantic context required to safely modify a component must remain bounded.**
+
+This does not mean every agent must literally receive every relevant line in one prompt. Retrieval, tools, compilers, and iterative inspection will remain useful. The architectural goal is that the relevant context forms a coherent, limited set rather than an open-ended dependency graph.
+
+---
+
+## 7. Proposed Metric: Context Surface
+
+A new research metric should be considered: **Context Surface (CS)**.
+
+Context Surface represents the amount of implementation and contract material that must be understood to make a particular change safely.
+
+Conceptually:
+
+```text
+Context Surface =
+    affected state
+  + affected transitions
+  + relevant invariants
+  + relevant contracts
+  + relevant tests
+  + direct dependencies
+  + required composition context
+```
+
+Possible empirical proxies include:
+
+- lines of code inspected before a valid change;
+- number of files read;
+- number of modules traversed;
+- tokens consumed reading existing code;
+- number of dependency hops;
+- number of unrelated states/messages included in the working context;
+- number of compiler/test repair iterations;
+- number of files modified;
+- regression rate;
+- time or token cost to reach a mechanically verified change.
+
+The purpose is not to create a perfect universal number immediately. The purpose is to make **change locality measurable**.
+
+---
+
+## 8. Two-Dimensional State-System Architecture
+
+The state-system architecture should now be considered across two related dimensions.
+
+### Dimension 1: Semantic State
+
+This dimension constrains what the system means and what actions are legal.
+
+A representative four-tier structure is:
+
+1. **Domain / Entity State** - the valid states of important domain concepts.
+2. **Workflow / Process State** - legal progression through business processes and obligations.
+3. **Effect / External Operation State** - explicit modeling of external requests and success/failure/unknown outcomes.
+4. **Presentation / Interaction State** - user-visible interaction states, navigation, forms, and UI behavior.
+
+### Dimension 2: Structural Containment
+
+This dimension constrains how those semantics are represented and changed in the codebase.
+
+A representative containment structure is:
+
+A. **Feature boundary** - coherent business or interaction responsibility.
+
+B. **Module boundary** - implementation ownership and locality.
+
+C. **Contract boundary** - explicit communication between components.
+
+D. **Test boundary** - local mechanical verification.
+
+E. **Agent-context boundary** - bounded context required for safe modification.
+
+The first dimension controls **what the system is allowed to do**.
+
+The second controls **how much of the system must be understood to safely change what it does**.
+
+Both are necessary for an architecture designed for reliable AI-assisted engineering.
+
+---
+
+## 9. Refined State-System Principle
+
+The original principle can be strengthened.
+
+Instead of only:
+
+> Make illegal states unrepresentable.
+
+The architecture should aim for:
+
+> **Make illegal states unrepresentable, illegal transitions unavailable, and the context required to change either bounded.**
+
+This connects type safety, state-transition safety, capability safety, modularity, verification, and AI context management into one architectural goal.
+
+---
+
+## 10. What the Bolero Case Demonstrates
+
+The Bolero client should be recorded as an architectural finding rather than hidden as an experiment limitation.
+
+A suitable research record is:
+
+> **Bolero client expansion intentionally stopped at the UI boundary.** The existing client concentrates approximately 7,000 lines of Elmish state, messages, transitions, rendering, and interaction logic into a single file. Implementing nine additional screens would require modifying the central `Model`, `Msg`, and `update` structures without sufficient contextual locality or reliable visual verification. The experiment therefore did not treat UI completion as worth an unverifiable regression risk. The underlying schema, domain behavior, API contract, persistence behavior, and live end-to-end execution were completed and mechanically verified. This is itself an architectural result: the monolithic presentation-state structure creates an AI-maintainability boundary that the more decomposed state architecture does not exhibit elsewhere in the system.
+
+The lesson is not that Elmish is unsuitable. The lesson is that a state-oriented framework can still be implemented in a way that concentrates too much semantic responsibility into one unit.
+
+The failure mode is **state concentration**, not state modeling.
+
+---
+
+## 11. Architectural Smells to Detect
+
+The following should be treated as warning signs:
+
+- one root state union continually growing with unrelated feature states;
+- one message/command union continually growing with unrelated actions;
+- one update function handling most application behavior;
+- feature changes routinely touching central application state;
+- tests requiring the whole application model for narrow behavior;
+- cross-feature mutation of internal state;
+- large shared helper modules with weak semantic ownership;
+- frequent need to read unrelated features before modifying one feature;
+- compiler changes that trigger broad, unrelated repair work;
+- agents repeatedly re-reading the same large central modules;
+- a feature being locally simple but globally risky to change.
+
+These smells should not automatically trigger a rewrite, but they should trigger a locality review.
+
+---
+
+## 12. Recommended Structural Pattern for Elmish/Bolero
+
+For substantial client functionality, prefer feature-owned MVU components rather than one application-wide implementation unit.
+
+Conceptually:
+
+```text
+Application/
+  AppModel.fs
+  AppMsg.fs
+  AppUpdate.fs
+  AppView.fs
+
+Features/
+  PatientList/
+    State.fs
+    Msg.fs
+    Update.fs
+    View.fs
+    Tests.fs
+
+  PatientDetail/
+    State.fs
+    Msg.fs
+    Update.fs
+    View.fs
+    Tests.fs
+
+  SurveyAdministration/
+    State.fs
+    Msg.fs
+    Update.fs
+    View.fs
+    Tests.fs
+```
+
+The exact file layout is secondary. The important property is that each feature has a bounded state-transition system and the application shell composes those systems through explicit contracts.
+
+A feature may still use fewer or more files depending on complexity. The directory structure should express semantic ownership rather than enforce ceremony.
+
+---
+
+## 13. Research Hypothesis Created by This Finding
+
+This finding creates a testable hypothesis:
+
+> **Semantically bounded code organization reduces the context, cost, and regression risk of AI-assisted software modification compared with logically equivalent monolithic state implementations.**
+
+A useful controlled experiment would compare equivalent changes in:
+
+1. a monolithic state implementation; and
+2. a semantically decomposed implementation.
+
+Measure at least:
+
+- code/files inspected;
+- input/output tokens;
+- tool calls;
+- compiler errors;
+- test failures;
+- repair loops;
+- files changed;
+- unrelated changes introduced;
+- mutation detection or regression rate;
+- time to mechanically verified completion;
+- agent requests for additional context;
+- human intervention required.
+
+The important question is not whether smaller files "feel cleaner." The question is whether semantic locality produces measurable improvements in correctness and AI execution cost.
+
+---
+
+## 14. Implications for Repository and Agent Rules
+
+This architectural extension should eventually be reflected in repository standards and agent instructions.
+
+Agents should be instructed to:
+
+- preserve bounded state ownership;
+- avoid expanding global state/message/update modules when a feature boundary is available;
+- create explicit contracts for cross-feature behavior;
+- prefer feature-local tests;
+- report when a requested change requires unusually broad context;
+- treat increasing Context Surface as architectural debt;
+- refuse blind high-risk rewrites when required context or verification is unavailable;
+- record structural limitations as evidence rather than hiding them behind forced completion.
+
+Architecture checks may eventually enforce some objective proxies, but automated rules should not reduce semantic locality to arbitrary line-count thresholds.
+
+---
+
+## 15. Conclusion
+
+The state-system architecture is not complete if it constrains runtime state but leaves the implementation structure unconstrained.
+
+Reliable AI-assisted engineering requires two forms of control:
+
+1. **behavioral constraint** - the system makes legal states and transitions explicit; and
+2. **structural constraint** - the implementation keeps the semantic context required for a change bounded.
+
+The Bolero client provided a concrete example of why this matters. The domain and service layers could be safely changed and mechanically verified, while a monolithic presentation-state unit created a point where further modification would become substantially more probabilistic.
+
+The resulting principle is therefore:
+
+> **A state system should bound not only the system's possible behavior, but also the code and context required to understand and safely change that behavior.**
+
+That principle should become part of the architecture, research methodology, repository standards, and future agent-development experiments.
