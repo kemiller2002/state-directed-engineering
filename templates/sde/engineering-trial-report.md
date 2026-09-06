@@ -32,12 +32,43 @@ is to produce reusable evidence, per
 
 ## Metric definitions (freeze before either trial begins)
 
+If Context Surface, CER, or Discovery Expansion is used, define the counting
+unit, declared feature boundary, dependency categories, and treatment before
+execution. Do not infer them from the result.
+
+## Durable telemetry checkpoints
+
+| Checkpoint | Timestamp | Cumulative authoritative metrics | Missing/unavailable metrics and why |
+|---|---|---|---|
+| T0 — experiment start | | | |
+| T1 — instrumentation/bootstrap complete | | | |
+| T2 — semantic foundation established | | | |
+| T3 — first vertical slice complete | | | |
+| T4 — implementation complete | | | |
+| T5 — verification complete | | | |
+| T6 — final completion | | | |
+
 ## Results
 
 | Metric | Condition A | Condition B |
 |---|---|---|
 
 ## Confounders
+
+## Defects by class
+
+| Defect | Domain/Product | Semantic | Boundary | Tooling/Build | Repository/Automation | Methodology | Experiment-Harness |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Count | | | | | | | |
+
+## Context and architecture findings
+
+- Declared vs. actual context:
+- Undeclared dependencies:
+- Cross-boundary edits:
+- Manifest drift:
+- Structural concentration:
+- Duplicate semantic authority:
 
 ## Hypothesis dispositions
 

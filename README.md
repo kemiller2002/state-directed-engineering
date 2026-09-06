@@ -6,10 +6,17 @@ This repository is a greenfield pilot running Repository Operating System
 ## Start here
 
 1. Read [`AGENTS.md`](AGENTS.md) and [`BOOTSTRAP.md`](BOOTSTRAP.md).
-2. Complete [`PROJECT-CHARTER.md`](PROJECT-CHARTER.md).
-3. Establish the baseline in [`context/CURRENT-STATE.md`](context/CURRENT-STATE.md).
+2. Use [`context/ARCHITECTURE.md`](context/ARCHITECTURE.md) as this
+   repository's semantic map; then follow the narrower canonical record for
+   the area being changed.
+3. Read [`PROJECT-CHARTER.md`](PROJECT-CHARTER.md) and establish the baseline
+   in [`context/CURRENT-STATE.md`](context/CURRENT-STATE.md).
 4. Select the first bounded mission and its observable acceptance criteria.
 5. Record durable evidence, decisions, and handoffs as the work proceeds.
+
+The current construction method is
+[`method/CONSTRUCTION-METHOD-v0.2.md`](method/CONSTRUCTION-METHOD-v0.2.md).
+Version 0.1 remains frozen as the prior method and historical trial target.
 
 ## Local operating commands
 

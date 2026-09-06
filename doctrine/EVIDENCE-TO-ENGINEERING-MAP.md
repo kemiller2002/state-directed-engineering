@@ -2,12 +2,12 @@
 id: SDE-DOCTRINE-006
 title: Evidence-to-Engineering Map
 status: accepted
-version: 0.1.0
+version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-05
 related_documents:
   - doctrine/CONTRADICTIONS-AND-DEPRECATED.md
-  - method/CONSTRUCTION-METHOD-v0.1.md
+  - method/CONSTRUCTION-METHOD-v0.2.md
 tags: [doctrine, traceability, evidence]
 ---
 
@@ -33,12 +33,23 @@ without new supporting evidence and a recorded reason.
 | A shared host-language "contracts assembly" is sufficient boundary protection for a same-language pair | — | **Contradicted** | EV-HN-2026-0002 | TH-SDE-2026-0002 | Deliverable 2's reproduction: the identical shared F# type produced three different wire behaviors depending on call path, inside one process. |
 | Public Integration Contracts must not require adopting State Programming to integrate | RECOMMENDED (not REQUIRED) | Plausible, not directly tested | EV-HN-2026-0002 | TH-SDE-2026-0002 | Source investigation's own principle 6 rating: "plausible but not directly tested." |
 | The Construction Method's fixed ordering (compile → architecture → boundary/contract → behavior → search → integration) | EXPERIMENTAL | Provisional, assembled from the above rows, not independently trial-tested as one ordered workflow | EV-HN-2026-0005 (procedural pattern observed, not the ordering itself tested as a unit) | — | Reorder only with recorded rationale; not yet validated as a sequence on a real project. |
+| A semantic area may span responsibility clusters/files while semantic authority remains singular | REQUIRED v0.2 contract; outcome benefits EXPERIMENTAL | Derived architectural finding and accepted design decision | EV-SDE-2026-0006; DF-SDE-2026-0004 | TH-SDE-2026-0005; HY-SDE-2026-0007 | No controlled monolith/decomposition comparison; physical splitting can worsen navigation or duplicate rules. |
+| Use a repository semantic map and feature manifests for deterministic local-first routing in nontrivial adopting projects | REQUIRED v0.2 execution contract; effectiveness EXPERIMENTAL | Accepted design decision; no outcome trial | EV-SDE-2026-0006; DF-SDE-2026-0004 | HY-SDE-2026-0008 | Manifest maintenance and staleness may offset benefit; small repositories may not need per-feature manifests. |
+| Bounded reasoning scope reduces engineering cost or defects | RESEARCH ONLY | Open | EV-SDE-2026-0006 | TH-SDE-2026-0005; HY-SDE-2026-0007; HY-SDE-2026-0008 | No causal comparison; task, model, tool, familiarity, and verification differences may dominate. |
+| Treat physical LOC as a configurable review signal, not semantic truth | RECOMMENDED review guidance | Derived architectural rationale | EV-SDE-2026-0006; DF-SDE-2026-0004 | HY-SDE-2026-0007 | Exact bands are provisional and language/generated-code sensitive; LOC cannot detect duplicate authority. |
+| Context Surface, CER, and Discovery Expansion diagnose unexpected context growth | EXPERIMENTAL | Proposed, not validated | EV-SDE-2026-0006 | HY-SDE-2026-0007; HY-SDE-2026-0008 | Counting unit and denominator must be preregistered; cross-cutting changes legitimately expand. Never gate conformance on CER. |
+| Serious experiments capture durable cumulative telemetry at T0–T6 and leave unavailable metrics missing | REQUIRED evidence practice | No-invention rule supported; checkpoint schedule adopted for prospective trials | EV-HN-2026-0005; EV-SDE-2026-0006; DF-SDE-2026-0004 | — | Environment may expose only a subset; checkpoints cannot retroactively repair missing historical telemetry. |
 
 ## How to use this map
 
 1. Before writing a new SDE rule, find or add a row here first.
-2. A row's confidence class can only be REQUIRED or RECOMMENDED if its
-   Evidence state is `Supported` — not `Open`, not `Contradicted`.
+2. Distinguish a **constitutive contract** from an **empirical outcome
+   claim**. An accepted Decision Record may define what v0.2 requires, but it
+   does not make the contract's cost/correctness benefit supported. Label that
+   outcome separately as EXPERIMENTAL or RESEARCH ONLY until evidence supports
+   it. An empirical claim can only become REQUIRED/RECOMMENDED evidence-based
+   guidance when its Evidence state is `Supported`, not `Open` or
+   `Contradicted`.
 3. A `Contradicted` row stays in this table permanently, cross-linked into
    `doctrine/CONTRADICTIONS-AND-DEPRECATED.md`, so a future agent cannot
    silently re-propose it without seeing why it was rejected.

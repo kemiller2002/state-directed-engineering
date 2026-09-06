@@ -52,5 +52,59 @@
     "title": "State Programming research consolidation and State-Directed Engineering v0.1 bootstrap",
     "updated": "2026-09-02",
     "version": "1.0.0"
+  },
+  {
+    "author_agent": "OpenAI Codex (runtime model identifier not exposed)",
+    "completion": {
+      "estimate": 1,
+      "state": "complete"
+    },
+    "confidence": {
+      "estimate": 0.5,
+      "label": "medium",
+      "rationale": "The integration preserves directly evidenced boundary and verification mechanisms, but structural-locality and manifest-effectiveness outcomes remain untested hypotheses."
+    },
+    "created": "2026-09-05",
+    "discipline": [
+      "software-engineering-methodology",
+      "software-architecture",
+      "agentic-engineering"
+    ],
+    "id": "RP-SDE-2026-0002",
+    "keywords": [
+      "responsibility-cluster",
+      "semantic-map",
+      "feature-manifest",
+      "context-surface",
+      "bounded-reasoning"
+    ],
+    "path": "research/packages/RP-SDE-2026-0002--structural-locality-and-navigation-integration.md",
+    "priority": "high",
+    "related_documents": [
+      "research/journals/JR-SDE-2026-0002--structural-locality-navigation-integration.md",
+      "research/evidence/EV-SDE-2026-0006--structural-locality-and-navigation-notes.md",
+      "research/hypotheses/HY-SDE-2026-0007--semantic-locality-bounds-context-and-risk.md",
+      "research/hypotheses/HY-SDE-2026-0008--semantic-maps-reduce-discovery-expansion.md",
+      "research/theories/TH-SDE-2026-0005--bounded-reasoning-scope.md",
+      "research/decisions/DF-SDE-2026-0004--adopt-sde-v0.2-context-and-structure.md",
+      "method/CONSTRUCTION-METHOD-v0.2.md"
+    ],
+    "related_projects": [
+      "state-directed-engineering"
+    ],
+    "research_area": "state-directed-engineering",
+    "status": "canonical",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "sde-v0.2",
+      "structural-locality",
+      "navigation",
+      "context",
+      "distribution"
+    ],
+    "title": "Structural locality and deterministic navigation integration for SDE v0.2",
+    "updated": "2026-09-05",
+    "version": "1.0.0"
   }
 ]

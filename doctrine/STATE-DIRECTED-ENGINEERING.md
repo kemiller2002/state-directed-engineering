@@ -2,12 +2,14 @@
 id: SDE-DOCTRINE-002
 title: State-Directed Engineering
 status: accepted
-version: 0.1.0
+version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-05
 related_documents:
   - doctrine/STATE-PROGRAMMING.md
-  - method/CONSTRUCTION-METHOD-v0.1.md
+  - doctrine/STRUCTURAL-LOCALITY.md
+  - method/CONSTRUCTION-METHOD-v0.2.md
+  - method/NAVIGATION-AND-CONTEXT.md
   - method/CHANGE-CLASSIFICATION.md
 supersedes: []
 superseded_by: []
@@ -25,6 +27,7 @@ State-Directed Engineering is the engineering methodology for building
 software using State Programming principles. It is concerned with:
 
 - how requirements are analyzed;
+- how a task is routed to its semantic feature and declared context;
 - how changes are classified (see
   [`method/CHANGE-CLASSIFICATION.md`](../method/CHANGE-CLASSIFICATION.md));
 - where implementation begins;
@@ -33,6 +36,8 @@ software using State Programming principles. It is concerned with:
   a mechanism that should exist instead;
 - how boundaries are handled (see
   [`BOUNDARY-PRESERVATION.md`](BOUNDARY-PRESERVATION.md));
+- how semantic ownership remains structurally bounded for humans and agents
+  (see [`STRUCTURAL-LOCALITY.md`](STRUCTURAL-LOCALITY.md));
 - how software is verified (see
   [`method/VERIFICATION-METHOD.md`](../method/VERIFICATION-METHOD.md));
 - how engineering work stops;
@@ -43,12 +48,14 @@ software using State Programming principles. It is concerned with:
 
 ## Status of this document
 
-**Provisional / Engineering Validation.** SDE v0.1 is scaffolded from three
-HelixNote controlled experiments. It has not yet been validated as a
-repeatable engineering practice on an application other than HelixNote. See
-`method/FIRST-VALIDATION-DESIGN.md` for the design of that validation
-(not yet executed) and Working Principle 33 of the original migration
-mission: do not solve that validation during this bootstrap.
+**Provisional / Engineering Validation.** SDE v0.2 retains the v0.1 core
+scaffolded from three HelixNote controlled experiments and adds versioned
+structural-locality and context-discovery contracts from
+`EV-SDE-2026-0006`. It has not yet been validated as a repeatable engineering
+practice on an application other than HelixNote. See
+`method/FIRST-VALIDATION-DESIGN.md` for the design of that validation (not yet
+executed). The v0.1 Construction Method remains frozen at
+`method/CONSTRUCTION-METHOD-v0.1.md`; v0.2 is a new experimental treatment.
 
 ## Why SDE exists as separate from State Programming
 
@@ -64,6 +71,24 @@ identical; the outcome differed because of *how the agent worked*. That is
 an engineering-methodology question, not an architecture question — which
 is exactly why SDE, not State Programming alone, has to answer it (see
 `method/AGENT-EXECUTION-RULES.md`).
+
+## Bounded reasoning scope
+
+SDE's current unifying design objective is to bound how much information a
+human or agent must infer at once to make a safe change. It connects state
+constraint, action constraint, semantic authority, structural locality,
+context discovery, and verification:
+
+> Make illegal states unrepresentable. Make illegal transitions unavailable.
+> Make legal capabilities explicit. Establish semantic decisions once and
+> derive their consequences where practical. Keep the reasoning context
+> required for change bounded and deterministically discoverable. Use the
+> earliest trustworthy mechanism capable of detecting each failure class, and
+> require evidence when declared boundaries are crossed.
+
+The component mechanisms have different evidence strengths. Bounded reasoning
+scope as a causal explanation for lower cost or fewer defects remains a
+candidate theory (`TH-SDE-2026-0005`), not a proven result.
 
 ## Confidence classes used throughout SDE
 
@@ -87,14 +112,15 @@ read HelixNote's full experimental archive. The intended layering:
 ```
 Researcher              -> full evidence / journals / REPs (research/)
 SDE maintainer          -> doctrine + evidence map + research as needed
-Normal engineering agent -> Construction Method + project requirements
+Normal engineering agent -> Construction Method + repository semantic map
+                             + relevant feature manifest + project requirements
                              + architecture rules + verification rules
                              + relevant templates (method/, templates/sde/)
 ```
 
 The research explains WHY a rule exists. `method/` explains WHAT TO DO. An
 engineering agent working on a real project should be able to follow
-`method/CONSTRUCTION-METHOD-v0.1.md` end to end without opening
+`method/CONSTRUCTION-METHOD-v0.2.md` end to end without opening
 `research/evidence/` unless something in the method itself is unclear or
 contested.
 

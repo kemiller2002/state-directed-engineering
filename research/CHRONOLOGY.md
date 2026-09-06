@@ -2,9 +2,9 @@
 id: SDE-CHRONOLOGY-001
 title: State Programming / State-Directed Engineering Chronology
 status: accepted
-version: 0.1.0
+version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-05
 tags: [chronology, history]
 ---
 
@@ -29,6 +29,8 @@ guessed.
 | 2026-09-02 00:25:50 | **Controlled Experiment 3 (CORRECTED, authoritative)** — log-count corrected to 76 (true ratio ~2.1x, not ~4.6x); harness-level telemetry surfaced with Condition B incompleteness caveat; third independent BCA=4.0 replication computed; positive self-report-reliability finding recorded | HelixNote commit `8ac05fd`, branch `experiment/agent-cost-comparison-v3` |
 | between 2026-09-01 20:40 and 2026-09-02 00:26 (exact time unknown) | A transition artifact referenced by the migration mission, `STATE-PROGRAMMING-EXPERIMENT-3-TO-ENGINEERING-TRANSITION_2026-09-01_2019_EDT.txt` (filename implies ~2026-09-02 00:19 UTC), was apparently produced by an orchestrating session moving from the Experiment 3 research toward SDE. **Not found** in either repository's git history on any branch, or on local disk, as of this migration. Presumed uncommitted/ephemeral. See `DF-SDE-2026-0002`. | Not located — recorded as a migration gap |
 | 2026-09-02 (this migration) | State-Directed Engineering repository bootstrap: State Programming research inventoried and consolidated into SDE evidence/hypothesis/theory/decision records; SDE doctrine (State Programming, State-Directed Engineering, Four-Tier Architecture, Boundary Preservation, Glossary, Evidence-to-Engineering Map, Contradictions register) established; Construction Method v0.1 and supporting method documents scaffolded; ROS work items created for this and follow-on work | `state-directed-engineering` repository, branch `claude/bootstrap-sde-from-helix-0umjmt` |
+| 2026-09-05 14:59:47 | Structural-locality, agent-navigation, and methodology-roadmap notes committed as source material for the next SDE revision | `state-directed-engineering` commit `d1b8d8f`, `Notes/` |
+| 2026-09-05 (WI-0026) | Notes reconciled into SDE/method v0.2: structural-locality doctrine, bounded reasoning candidate theory, semantic-map/feature-manifest contracts, local-first context escalation, greenfield guidance, defect/context telemetry, warning-only structural verification, and distribution package v1.1.0. Claimed navigation/locality benefits remain unvalidated; no greenfield trial result was inferred. | `RP-SDE-2026-0002`; `DF-SDE-2026-0004` |
 
 ## Open dating gaps
 

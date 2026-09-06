@@ -2,9 +2,9 @@
 id: SDE-DOCTRINE-007
 title: Contradictions and Deprecated Ideas
 status: accepted
-version: 0.1.0
+version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-05
 related_documents:
   - doctrine/EVIDENCE-TO-ENGINEERING-MAP.md
 tags: [doctrine, contradictions, deprecated]
@@ -98,3 +98,34 @@ Architecture (Semantic Model / Transition / Orchestration / Host)
 classifies architectural responsibility layers. See
 `research/evidence/EV-HN-2026-0001--*.md` for the full disambiguation. Do
 not merge these two in future doctrine revisions.
+
+## Semantic locality means one semantic area per file
+
+**Status:** Rejected as a v0.2 interpretation, not tested as a universal
+empirical proposition.
+**Reason:** Semantic authority, responsibility grouping, and physical source
+organization are distinct. A cohesive area may span multiple files, while a
+small file may still depend on a large global context. See
+`doctrine/STRUCTURAL-LOCALITY.md` and `EV-SDE-2026-0006`.
+
+## Exact LOC thresholds prove structural conformance
+
+**Status:** Unsupported.
+**Reason:** Physical line count can trigger review but cannot establish
+responsibility cohesion, semantic duplication, dependency direction, or
+Context Surface. The v0.2 defaults are configurable warning bands, not hard
+semantic laws.
+
+## CER is a universal quality score or pass/fail gate
+
+**Status:** Unsupported / explicitly non-doctrinal.
+**Reason:** Context Surface has no validated universal unit, and legitimate
+cross-cutting changes can have high expansion. CER and Discovery Expansion are
+experimental diagnostics only (`HY-SDE-2026-0007`, `0008`).
+
+## Feature manifests are semantic authorities
+
+**Status:** Rejected by design.
+**Reason:** A manifest routes to executable/documented authority. Restating
+transition legality, invariants, or wire vocabulary in the manifest would
+create the duplication SDE is meant to prevent.

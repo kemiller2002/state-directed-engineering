@@ -128,5 +128,62 @@
     "title": "Mechanical feedback can substitute for agent search/inference effort",
     "type": "hypothesis",
     "updated": "2026-09-02"
+  },
+  {
+    "author_agent": "OpenAI Codex (runtime model identifier not exposed)",
+    "confidence": "low",
+    "confidence_estimate": 0.35,
+    "created": "2026-09-05",
+    "disposition": "unresolved",
+    "evidence_against": [],
+    "evidence_for": [
+      "EV-SDE-2026-0006"
+    ],
+    "id": "HY-SDE-2026-0007",
+    "path": "research/hypotheses/HY-SDE-2026-0007--semantic-locality-bounds-context-and-risk.md",
+    "related_theories": [
+      "TH-SDE-2026-0005"
+    ],
+    "research_area": "state-directed-engineering",
+    "status": "active",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "structural-locality",
+      "context-surface",
+      "regression-risk"
+    ],
+    "title": "Semantic structural locality reduces context acquisition and regression risk",
+    "type": "hypothesis",
+    "updated": "2026-09-05"
+  },
+  {
+    "author_agent": "OpenAI Codex (runtime model identifier not exposed)",
+    "confidence": "low",
+    "confidence_estimate": 0.3,
+    "created": "2026-09-05",
+    "disposition": "unresolved",
+    "evidence_against": [],
+    "evidence_for": [
+      "EV-SDE-2026-0006"
+    ],
+    "id": "HY-SDE-2026-0008",
+    "path": "research/hypotheses/HY-SDE-2026-0008--semantic-maps-reduce-discovery-expansion.md",
+    "related_theories": [
+      "TH-SDE-2026-0005"
+    ],
+    "research_area": "state-directed-engineering",
+    "status": "active",
+    "superseded_by": [],
+    "supersedes": [],
+    "tags": [
+      "navigation",
+      "feature-manifest",
+      "discovery-expansion",
+      "cer"
+    ],
+    "title": "Semantic maps and feature manifests reduce discovery expansion",
+    "type": "hypothesis",
+    "updated": "2026-09-05"
   }
 ]

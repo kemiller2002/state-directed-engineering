@@ -27,4 +27,7 @@
 | WI-0022 | Audit SDE distribution and project bootstrap implementation | complete | audit, distribution | high |
 | WI-0023 | Add npm Trusted Publishing workflow and bump SDE package to 1.0.0 | complete | distribution, ci, release | high |
 | WI-0024 | Repair npm release merge artifact and attribution | complete | distribution, release | high |
-| WI-0025 | Fix npm trusted-publishing package metadata | ready | distribution, release, ci | high |
+| WI-0025 | Fix npm trusted-publishing package metadata | complete | distribution, release, ci | high |
+| WI-0026 | Reconcile structural locality and agent navigation research into SDE | complete | method, architecture, agents, verification | high |
+| WI-0027 | Review tools/ros_cli.mjs responsibility boundaries | captured | structure, verification, follow-up | low |
+| WI-0028 | Review research notes and finalize SDE context/structure integration | ready | method, architecture, verification, telemetry | high |

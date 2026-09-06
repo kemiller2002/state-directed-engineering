@@ -52,7 +52,7 @@ test("sourceRevision is suffixed '-dirty' when the canonical source tree has unc
   // parallelism because no other test file rebuilds the package; the only
   // other build() caller in this suite runs earlier in this same file,
   // where node:test executes tests sequentially by default.
-  const probeFile = path.join(REPO_ROOT, "method", "CONSTRUCTION-METHOD-v0.1.md");
+  const probeFile = path.join(REPO_ROOT, "method", "CONSTRUCTION-METHOD-v0.2.md");
   const original = fs.readFileSync(probeFile, "utf8");
   const outDir = makeTempDir("sde-build-dirty-");
   try {
@@ -110,6 +110,22 @@ test("every related_documents entry in the built package resolves to a file that
       if (dangling.length > 0) danglingByFile[relPath] = dangling;
     }
     assert.deepEqual(danglingByFile, {}, "no distributed file should reference a related_documents path that isn't itself installed");
+  } finally {
+    cleanup(outDir);
+  }
+});
+
+test("canonical Markdown links are rewritten when distributed paths move", () => {
+  const outDir = makeTempDir("sde-build-links-");
+  try {
+    build({ outputDir: outDir });
+    const structural = fs.readFileSync(path.join(outDir, "architecture", "STRUCTURAL-LOCALITY.md"), "utf8");
+    assert.match(structural, /\.\.\/reference\/ENGINEERING-METRICS\.md/);
+    assert.doesNotMatch(structural, /\.\.\/method\/ENGINEERING-METRICS\.md/);
+
+    const manifests = fs.readFileSync(path.join(outDir, "method", "FEATURE-MANIFESTS.md"), "utf8");
+    assert.match(manifests, /\.\.\/templates\/repository-semantic-map\.md/);
+    assert.doesNotMatch(manifests, /\.\.\/templates\/sde\/repository-semantic-map\.md/);
   } finally {
     cleanup(outDir);
   }

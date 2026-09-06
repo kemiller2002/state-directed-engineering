@@ -1,15 +1,23 @@
 {
   "schemaVersion": 1,
   "description": "Machine-readable mapping from canonical SDE repository sources to the SDE execution package (.sde/) installed into consuming repositories. 'source' paths are relative to the repository root. 'authored' entries have no canonical source in research/, doctrine/, or method/ and are maintained directly under distribution/authored/ as minimal, distribution-specific wrapper content, per the distribution mission's rule against silently inventing methodology.",
-  "methodVersionSource": "method/CONSTRUCTION-METHOD-v0.1.md",
+  "methodVersionSource": "method/CONSTRUCTION-METHOD-v0.2.md",
   "files": [
     {
-      "source": "method/CONSTRUCTION-METHOD-v0.1.md",
+      "source": "method/CONSTRUCTION-METHOD-v0.2.md",
       "destination": "method/CONSTRUCTION-METHOD.md"
     },
     {
       "source": "method/CHANGE-CLASSIFICATION.md",
       "destination": "method/CHANGE-CLASSIFICATION.md"
+    },
+    {
+      "source": "method/NAVIGATION-AND-CONTEXT.md",
+      "destination": "method/NAVIGATION-AND-CONTEXT.md"
+    },
+    {
+      "source": "method/FEATURE-MANIFESTS.md",
+      "destination": "method/FEATURE-MANIFESTS.md"
     },
     {
       "source": "method/VERIFICATION-METHOD.md",
@@ -28,6 +36,10 @@
       "destination": "architecture/BOUNDARY-PRESERVATION.md"
     },
     {
+      "source": "doctrine/STRUCTURAL-LOCALITY.md",
+      "destination": "architecture/STRUCTURAL-LOCALITY.md"
+    },
+    {
       "source": "doctrine/GLOSSARY.md",
       "destination": "reference/GLOSSARY.md"
     },
@@ -42,6 +54,14 @@
     {
       "source": "templates/sde/completion-report.md",
       "destination": "templates/completion-report.md"
+    },
+    {
+      "source": "templates/sde/repository-semantic-map.md",
+      "destination": "templates/repository-semantic-map.md"
+    },
+    {
+      "source": "templates/sde/feature-manifest.md",
+      "destination": "templates/feature-manifest.md"
     },
     {
       "authored": true,

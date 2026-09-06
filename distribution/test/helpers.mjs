@@ -36,7 +36,7 @@ export function fixturePackageWithVersion(version) {
   const manifest = buildManifest({
     packageName: "@echelon-foundry/sde",
     sdeVersion: version,
-    methodVersion: "0.1",
+    methodVersion: "0.2",
     sourceRevision: "fixture",
     dir: fixtureDir
   });

@@ -4,7 +4,7 @@
   "repository": "state-directed-engineering",
   "actor": "ros-bootstrap",
   "startedAt": "2026-09-02T05:49:57.408Z",
-  "updatedAt": "2026-09-02T20:09:41.692Z",
+  "updatedAt": "2026-09-06T02:17:25.924Z",
   "baselineDirtyPaths": [],
   "workItems": [
     {
@@ -349,6 +349,29 @@
       "evidence": [],
       "updatedAt": "2026-09-02T20:09:41.692Z",
       "completedAt": "2026-09-02T20:09:41.692Z"
+    },
+    {
+      "id": "WI-0026",
+      "type": "research",
+      "state": "complete",
+      "semanticState": "complete",
+      "evidence": [
+        {
+          "type": "research-record",
+          "path": "research/packages/RP-SDE-2026-0002--structural-locality-and-navigation-integration.md"
+        }
+      ],
+      "updatedAt": "2026-09-05T20:43:29.580Z",
+      "completedAt": "2026-09-05T20:43:29.580Z",
+      "conclusion": "supported-as-guidance-outcomes-unvalidated"
+    },
+    {
+      "id": "WI-0028",
+      "type": "research",
+      "state": "active",
+      "semanticState": "active",
+      "evidence": [],
+      "updatedAt": "2026-09-06T02:17:25.924Z"
     }
   ]
 }

@@ -160,5 +160,48 @@
     "title": "HelixNote Controlled Experiment 3 (CORRECTED) — agent reasoning cost under mechanical boundary hardening",
     "type": "evidence",
     "updated": "2026-09-02"
+  },
+  {
+    "confidence": "medium",
+    "contradicts": [],
+    "created": "2026-09-05",
+    "created_by_agent": "OpenAI Codex (runtime model identifier not exposed)",
+    "evidence_type": "derived",
+    "id": "EV-SDE-2026-0006",
+    "path": "research/evidence/EV-SDE-2026-0006--structural-locality-and-navigation-notes.md",
+    "related_theories": [
+      "TH-SDE-2026-0003",
+      "TH-SDE-2026-0004",
+      "TH-SDE-2026-0005"
+    ],
+    "research_area": "state-directed-engineering",
+    "retrieved": "2026-09-05",
+    "source_author": "Kevin Miller (Git author; individual passage authorship not separately recorded)",
+    "source_branch": "claude/ros-bootstrap-init-ao9vu4",
+    "source_commit": "d1b8d8f39b9b3bdc6bbde842b29a1f5b16301e95",
+    "source_date": "2026-09-05",
+    "source_paths": [
+      "Notes/agent-navigation-context-discovery-contract.txt",
+      "Notes/state-system-structural-locality-contract.txt",
+      "Notes/roadmap-to-review.md"
+    ],
+    "source_repository": "kemiller2002/state-directed-engineering",
+    "source_title": "Committed SDE structural-locality, navigation, and roadmap notes",
+    "status": "accepted",
+    "supports": [
+      "HY-SDE-2026-0007",
+      "HY-SDE-2026-0008",
+      "TH-SDE-2026-0005"
+    ],
+    "tags": [
+      "structural-locality",
+      "navigation",
+      "context-surface",
+      "sde-v0.2",
+      "notes"
+    ],
+    "title": "Structural locality, agent navigation, and SDE v0.2 proposal notes",
+    "type": "evidence",
+    "updated": "2026-09-05"
   }
 ]

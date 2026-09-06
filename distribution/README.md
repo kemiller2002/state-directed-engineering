@@ -53,18 +53,23 @@ and which version of SDE is installed.
 ├── method/
 │   ├── CONSTRUCTION-METHOD.md
 │   ├── CHANGE-CLASSIFICATION.md
+│   ├── NAVIGATION-AND-CONTEXT.md
+│   ├── FEATURE-MANIFESTS.md
 │   ├── VERIFICATION-METHOD.md
 │   └── AGENT-EXECUTION-RULES.md
 ├── architecture/
 │   ├── FOUR-TIER-ARCHITECTURE.md
-│   └── BOUNDARY-PRESERVATION.md
+│   ├── BOUNDARY-PRESERVATION.md
+│   └── STRUCTURAL-LOCALITY.md
 ├── reference/
 │   ├── GLOSSARY.md
 │   └── ENGINEERING-METRICS.md
 └── templates/
     ├── work-item.md
     ├── execution-log.md
-    └── completion-report.md
+    ├── completion-report.md
+    ├── repository-semantic-map.md
+    └── feature-manifest.md
 ```
 
 ## What does not get installed
@@ -117,7 +122,7 @@ necessarily move together:
 
 - **npm package version** (`package.json` `version`, e.g. `1.0.0`) — this
   CLI's own release.
-- **method version** (`MANIFEST.json` `methodVersion`, e.g. `0.1`) — the
+- **method version** (`MANIFEST.json` `methodVersion`, e.g. `0.2`) — the
   construction method's own version, read from its canonical document's
   front matter at build time. A package release that fixes an installer
   bug without changing methodology content bumps the package version
@@ -138,11 +143,42 @@ modified) — see [`sde-status.exit-codes`](#exit-codes) below.
 Recomputes a SHA-256 for every file `MANIFEST.json` declares and compares
 it against the recorded hash; also detects files the manifest declares but
 that are missing, and files present under `.sde/` that the manifest does
-not declare. Never mutates anything. Suitable for CI:
+not declare. It then performs the portable `SDE-STRUCT-001` source-line
+review. Structural findings are warnings and do not change a successful exit
+code; file size is a review signal, not proof of semantic nonconformance. The
+command never mutates anything and is suitable for CI:
 
 ```
 npx @echelon-foundry/sde verify
 ```
+
+The default warning bands are 500 lines (review), 1,000 lines (strong
+review), above 2,000 lines (justification normally expected), and above
+4,000 lines (normally a conformance concern). Common dependency, build, and
+generated-output directories are skipped. A project can override source
+extensions, excluded paths, or bands with a project-owned `sde.config.json`:
+
+```json
+{
+  "structuralReview": {
+    "extensions": [".fs", ".ts", ".tsx"],
+    "excludePaths": ["src/generated"],
+    "thresholds": {
+      "reviewAt": 500,
+      "strongReviewAt": 1000,
+      "justificationAbove": 2000,
+      "conformanceConcernAbove": 4000
+    }
+  }
+}
+```
+
+Set `structuralReview.enabled` to `false` only with a project-level reason.
+Invalid configuration fails verification because the requested structural
+check cannot be trusted. V0.2 does not automate declaration concentration,
+responsibility mixing, duplicate semantic authority, missing maps/manifests,
+or undeclared dependencies; those require semantic evidence the portable
+scanner cannot reliably infer.
 
 ## How `update` works
 

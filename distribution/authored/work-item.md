@@ -3,6 +3,8 @@ id:
 title:
 status: proposed
 change_class: semantic | boundary | mechanical-propagation | presentation
+semantic_feature:
+feature_manifest:
 created:
 ---
 
@@ -18,6 +20,12 @@ instead — do not maintain two parallel work-item stores.
 ## Change classification
 
 See `../method/CHANGE-CLASSIFICATION.md`. State which class this is and why.
+
+## Semantic feature and expected modification boundary
+
+Identify the feature from the repository semantic map, read its manifest, and
+record the expected normal boundary. If no map/manifest exists, say so; do not
+invent one after implementation to make context expansion appear smaller.
 
 ## Acceptance criteria
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "repository": "state-directed-engineering",
-  "nextSeq": 26,
+  "nextSeq": 29,
   "items": [
     {
       "id": "WI-0001",
@@ -434,6 +434,62 @@
       "attachments": [],
       "createdAt": "2026-09-02T20:09:18.271Z",
       "updatedAt": "2026-09-02T20:09:22.081Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0026",
+      "title": "Reconcile structural locality and agent navigation research into SDE",
+      "description": null,
+      "tags": [
+        "method",
+        "architecture",
+        "agents",
+        "verification"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-05T18:45:39.161Z",
+      "updatedAt": "2026-09-05T18:45:43.122Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0027",
+      "title": "Review tools/ros_cli.mjs responsibility boundaries",
+      "description": "SDE-STRUCT-001 reports tools/ros_cli.mjs at 1,085 physical lines (strong-review band). Inspect its semantic responsibilities and split only if decomposition would improve locality without obscuring CLI flow; the warning alone is not proof of nonconformance.",
+      "tags": [
+        "structure",
+        "verification",
+        "follow-up"
+      ],
+      "priority": "low",
+      "status": "captured",
+      "attachments": [],
+      "createdAt": "2026-09-05T20:33:04.816Z",
+      "updatedAt": "2026-09-05T20:33:04.816Z",
+      "createdBy": "unknown",
+      "source": "manual",
+      "sourceReference": null
+    },
+    {
+      "id": "WI-0028",
+      "title": "Review research notes and finalize SDE context/structure integration",
+      "description": null,
+      "tags": [
+        "method",
+        "architecture",
+        "verification",
+        "telemetry"
+      ],
+      "priority": "high",
+      "status": "ready",
+      "attachments": [],
+      "createdAt": "2026-09-06T02:17:18.647Z",
+      "updatedAt": "2026-09-06T02:17:25.867Z",
       "createdBy": "unknown",
       "source": "manual",
       "sourceReference": null

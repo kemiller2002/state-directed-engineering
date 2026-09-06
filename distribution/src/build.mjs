@@ -95,6 +95,26 @@ function rewriteRelatedDocuments(text, sourceToDestination) {
   return text.slice(0, blockStart) + newFrontMatter + text.slice(blockEnd);
 }
 
+// Canonical Markdown links are relative to the canonical source tree, while
+// distribution destinations may rename their directory (for example,
+// doctrine/ -> architecture/ and method metrics -> reference/). Rewrite only
+// links whose canonical target is itself in the distribution map. Links to
+// excluded research evidence remain citations to the canonical repository;
+// this function does not pretend those files were installed.
+function rewriteDistributedMarkdownLinks(text, sourcePath, destinationPath, sourceToDestination) {
+  return text.replace(/\]\(([^)\s]+)\)/g, (whole, rawTarget) => {
+    if (rawTarget.startsWith("#") || /^[A-Za-z][A-Za-z0-9+.-]*:/.test(rawTarget)) return whole;
+    const hashIndex = rawTarget.indexOf("#");
+    const targetPath = hashIndex === -1 ? rawTarget : rawTarget.slice(0, hashIndex);
+    const fragment = hashIndex === -1 ? "" : rawTarget.slice(hashIndex);
+    const canonicalTarget = path.posix.normalize(path.posix.join(path.posix.dirname(sourcePath), targetPath));
+    const distributedTarget = sourceToDestination.get(canonicalTarget);
+    if (!distributedTarget) return whole;
+    const relativeTarget = path.posix.relative(path.posix.dirname(destinationPath), distributedTarget) || path.posix.basename(distributedTarget);
+    return `](${relativeTarget}${fragment})`;
+  });
+}
+
 function loadDistributionMap(mapPath = path.join(DISTRIBUTION_DIR, "DISTRIBUTION-MAP.json")) {
   const map = JSON.parse(fs.readFileSync(mapPath, "utf8"));
   if (!Array.isArray(map.files) || map.files.length === 0) {
@@ -151,7 +171,13 @@ export function build({ outputDir = DIST_OUTPUT_DIR, mapPath } = {}) {
       copyFileInto(path.join(REPO_ROOT, entry.source), destPath);
       if (destPath.endsWith(".md")) {
         const original = fs.readFileSync(destPath, "utf8");
-        const rewritten = rewriteRelatedDocuments(original, sourceToDestination);
+        const relatedRewritten = rewriteRelatedDocuments(original, sourceToDestination);
+        const rewritten = rewriteDistributedMarkdownLinks(
+          relatedRewritten,
+          entry.source,
+          entry.destination,
+          sourceToDestination
+        );
         if (rewritten !== original) fs.writeFileSync(destPath, rewritten);
       }
     }

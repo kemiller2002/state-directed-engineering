@@ -2,9 +2,9 @@
 id: PROJECT-CHARTER-state-directed-engineering
 title: State Directed Engineering Project Charter
 status: accepted
-version: 0.2.0
+version: 0.3.0
 created: 2026-09-02
-updated: 2026-09-02
+updated: 2026-09-05
 supersedes: []
 superseded_by: []
 ---
@@ -21,11 +21,13 @@ as a durable, evidence-traceable body of doctrine, method, and templates,
 distinct from the paradigm itself. See `doctrine/STATE-PROGRAMMING.md` and
 `doctrine/STATE-DIRECTED-ENGINEERING.md`.
 
-This charter update (v0.2.0) supersedes the greenfield-pilot placeholder
-text (v0.1.0, "communication problem" framing) with the actual, now-bounded
-first outcome. It does not change ROS's own pilot-evaluation posture: SDE's
-status as a validated discipline remains an open, evidence-gated question,
-not an assumed fact (see `README.md`'s "Pilot rule").
+Charter v0.2.0 superseded the greenfield-pilot placeholder text (v0.1.0,
+"communication problem" framing) with the first bounded outcome. This v0.3.0
+update adds SDE v0.2's structural-locality and navigation contracts while
+preserving their empirical claims as open hypotheses. It does not change
+ROS's pilot-evaluation posture: SDE's status as a validated discipline
+remains an open, evidence-gated question, not an assumed fact (see
+`README.md`'s "Pilot rule").
 
 ## Intended users
 
@@ -43,10 +45,15 @@ Controlled Experiments 1-3) into SDE v0.1 doctrine, method, and evidence,
 with full provenance back to HelixNote's repository, branches, and commits.
 See `research/packages/RP-SDE-2026-0001--state-programming-to-sde-migration.md`.
 
+**Completed bounded outcome (2026-09-05):** reconcile the repository's
+structural-locality and agent-navigation research notes into an explicitly
+versioned SDE v0.2 method, evidence chain, templates, distribution package,
+and portable structural-review warning.
+
 **Next bounded outcome (not yet started):** execute the first engineering
 validation — a real requirement, taken from requirement to verified
-software, on a project other than HelixNote, following
-`method/CONSTRUCTION-METHOD-v0.1.md` — per
+software, on a project other than HelixNote, following a frozen method
+version — per
 `method/FIRST-VALIDATION-DESIGN.md`, evaluated in two to four weeks once
 begun.
 
@@ -59,6 +66,8 @@ begun.
 - Evaluation of the Repository Operating System pilot on this specific kind
   of work (research consolidation + doctrine authoring), continued from the
   original charter.
+- SDE v0.2 contracts for structural locality, repository semantic maps,
+  feature manifests, bounded context escalation, and context telemetry.
 
 ## Excluded
 
@@ -70,7 +79,8 @@ begun.
 - Executing the first engineering validation (designed, not run, in this
   phase).
 - Broad discipline claims without comparative evidence — every REQUIRED/
-  RECOMMENDED rule must trace to `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md`.
+  RECOMMENDED rule and every empirical outcome claim must be classified in
+  `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md`.
 
 ## Success criteria
 
@@ -80,8 +90,13 @@ begun.
 - Material decisions cite their evidence and alternatives (ROS `DF-`
   records; `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md`).
 - A successor can continue from repository records without chat history
-  (`research/journals/JR-SDE-2026-0001` and this charter's "Next bounded
-  outcome").
+  (`research/journals/JR-SDE-2026-0002`, `HANDOFF.md`, and this charter's
+  "Next bounded outcome").
+- A fresh agent can route from the repository semantic map to the current
+  method, distinguish manifests from semantic authority, and explain why
+  structural/context diagnostics are not correctness gates.
+- The distributed v0.2 package builds deterministically and its integrity,
+  navigation links, and warning-only structural review are executable.
 - Pilot measurements can compare the ROS-operated approach with the
   declared baseline (see `context/CURRENT-STATE.md`).
 
@@ -91,8 +106,10 @@ begun.
   correction to HelixNote is recorded as a HelixNote-side ROS-equivalent
   work item, not made silently (mission rule, preserved here for future
   work).
-- Constraint: no SDE rule may be promoted to REQUIRED/RECOMMENDED without a
-  `Supported` row in `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md`.
+- Constraint: constitutive method contracts may be adopted by an accepted
+  decision, but the outcome they predict must remain explicitly
+  `Experimental` or `Open` until discriminating evidence supports it. The
+  two may not be conflated in `doctrine/EVIDENCE-TO-ENGINEERING-MAP.md`.
 - Assumption: HelixNote's three-experiment sequence, though a single
   application's evidence, is sufficient to scaffold a v0.1 method for
   engineering validation — not sufficient to call the method established.

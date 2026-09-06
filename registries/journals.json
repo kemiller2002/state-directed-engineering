@@ -12,5 +12,35 @@
     "title": "SDE bootstrap migration journal",
     "type": "journal",
     "updated": "2026-09-02"
+  },
+  {
+    "author_agent": "OpenAI Codex (runtime model identifier not exposed)",
+    "created": "2026-09-05",
+    "evidence_ids": [
+      "EV-SDE-2026-0006"
+    ],
+    "hypothesis_ids": [
+      "HY-SDE-2026-0007",
+      "HY-SDE-2026-0008"
+    ],
+    "id": "JR-SDE-2026-0002",
+    "path": "research/journals/JR-SDE-2026-0002--structural-locality-navigation-integration.md",
+    "related_mission": "WI-0026",
+    "related_package": "RP-SDE-2026-0002",
+    "research_area": "state-directed-engineering",
+    "status": "accepted",
+    "tags": [
+      "journal",
+      "sde-v0.2",
+      "structural-locality",
+      "navigation",
+      "context"
+    ],
+    "theory_ids": [
+      "TH-SDE-2026-0005"
+    ],
+    "title": "Structural locality and agent navigation integration journal",
+    "type": "journal",
+    "updated": "2026-09-05"
   }
 ]

@@ -40,5 +40,37 @@
     "title": "Defer solving the 4.0 Boundary Change Amplification finding during this migration",
     "type": "decision-record",
     "updated": "2026-09-02"
+  },
+  {
+    "created": "2026-09-05",
+    "evidence": [
+      "EV-HN-2026-0001",
+      "EV-HN-2026-0002",
+      "EV-HN-2026-0004",
+      "EV-HN-2026-0005",
+      "EV-SDE-2026-0006"
+    ],
+    "id": "DF-SDE-2026-0004",
+    "path": "research/decisions/DF-SDE-2026-0004--adopt-sde-v0.2-context-and-structure.md",
+    "related_documents": [
+      "RP-SDE-2026-0002",
+      "method/CONSTRUCTION-METHOD-v0.2.md"
+    ],
+    "status": "accepted",
+    "tags": [
+      "governance",
+      "sde-v0.2",
+      "structural-locality",
+      "navigation",
+      "verification"
+    ],
+    "theories": [
+      "TH-SDE-2026-0003",
+      "TH-SDE-2026-0004",
+      "TH-SDE-2026-0005"
+    ],
+    "title": "Adopt SDE v0.2 structural locality and deterministic context discovery",
+    "type": "decision-record",
+    "updated": "2026-09-05"
   }
 ]
