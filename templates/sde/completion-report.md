@@ -1,8 +1,14 @@
 ---
 work_item: WI-XXXX or external ID
-change_class: Semantic | Boundary | Mechanical Propagation | Presentation
+change_classes: [Semantic] # one or more; summarize site-level classes below
 semantic_feature:
 feature_manifest:
+agent:
+provider:
+model:
+runtime_or_session:
+telemetry_authority:
+started: YYYY-MM-DDTHH:MM:SSZ
 completed: YYYY-MM-DDTHH:MM:SSZ
 ---
 
@@ -10,7 +16,7 @@ completed: YYYY-MM-DDTHH:MM:SSZ
 
 ## Objective and acceptance criteria
 
-## Change classification and why
+## Change classifications and why
 
 ## Files changed
 
@@ -35,7 +41,9 @@ completed: YYYY-MM-DDTHH:MM:SSZ
 
 | Metric | Value | Evidence class |
 |---|---|---|
-| Search operations | | |
+| Agent / provider / model / runtime | | |
+| Start / end / elapsed time | | |
+| Search / symbol-search / repository-wide-search operations | | |
 | Repair loops | | |
 | Semantic decisions | | |
 | Boundary decisions | | |
@@ -47,12 +55,15 @@ completed: YYYY-MM-DDTHH:MM:SSZ
 | Declared-dependency reads | | |
 | Undeclared-dependency reads | | |
 | Unrelated reads | | |
-| Cross-boundary edits | | |
+| Files changed / cross-boundary edits | | |
 | Build attempts / failures | | |
 | Test attempts / failures | | |
 | Tool calls | | |
-| Input / output / cache tokens | | |
-| Cost / elapsed time | | |
+| Input / output / cache-read / cache-write / total tokens | | |
+| Tokens consumed before first edit | | |
+| Time / tokens to first valid edit | | |
+| Time / tokens to verified completion | | |
+| Cost | | |
 
 Context Surface, CER, and Discovery Expansion are optional experimental
 diagnostics. Report them only when the unit, declared baseline, and events were

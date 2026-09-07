@@ -2,16 +2,19 @@
 id: GV-START-001
 title: Agent Startup Guide
 status: canonical
-version: 1.0.0
+version: 1.1.0
 owners:
   - repository-governance
 created: 2026-07-22
-updated: 2026-07-22
+updated: 2026-09-06
 review_cycle: quarterly
 supersedes: []
 superseded_by: []
 related_documents:
   - docs/00-governance/README.md
+  - context/ARCHITECTURE.md
+  - method/CONSTRUCTION-METHOD-v0.2.md
+  - method/AGENT-EXECUTION-RULES.md
 tags: [governance, agents, startup]
 ---
 
@@ -31,6 +34,21 @@ The Repository Operating System (ROS) makes research, engineering, decisions, an
 6. Execute, validate, update affected records, and leave a handoff.
 
 Detailed rules are in the [Agent Operating Manual](docs/00-governance/Agent-Operating-Manual.md). Research packages follow the [REP Specification](docs/00-governance/Research-Execution-Package-Specification.md); engineering follows the [Engineering Standards](docs/00-governance/Engineering-Standards.md).
+
+## SDE Repository Routing
+
+After reading repository governance, use
+[`context/ARCHITECTURE.md`](context/ARCHITECTURE.md) as this repository's
+semantic map and follow the narrower authority it identifies. The current
+method is
+[`method/CONSTRUCTION-METHOD-v0.2.md`](method/CONSTRUCTION-METHOD-v0.2.md);
+v0.1 is a frozen prior treatment, not the default for new work.
+
+For engineering or methodology changes, follow the task protocol in
+[`method/AGENT-EXECUTION-RULES.md`](method/AGENT-EXECUTION-RULES.md) and the
+navigation/escalation contract it links. Repository- or feature-local agent
+instructions are routing layers: they point to semantic authority, manifests,
+and local commands rather than restating semantic rules as another authority.
 
 ## Authority
 

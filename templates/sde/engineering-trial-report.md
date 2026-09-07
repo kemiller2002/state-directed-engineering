@@ -27,6 +27,8 @@ is to produce reusable evidence, per
 |---|---|---|
 | Starting commit/tag | | |
 | Architecture/method variant | | |
+| Agent/provider/model/runtime | | |
+| Telemetry authority and completeness window | | |
 
 ## Frozen mission text (verbatim, byte-identical across conditions)
 
@@ -35,6 +37,12 @@ is to produce reusable evidence, per
 If Context Surface, CER, or Discovery Expansion is used, define the counting
 unit, declared feature boundary, dependency categories, and treatment before
 execution. Do not infer them from the result.
+
+Reuse existing ROS/project/harness telemetry where available. Freeze each
+metric's source, capability state, unit, scope, aggregation, and completeness
+window at T0. Additional provider fields may be retained through a sanctioned
+extension/raw layer, but the frozen comparison schema must not be changed
+post-hoc to make one condition look more complete.
 
 ## Durable telemetry checkpoints
 

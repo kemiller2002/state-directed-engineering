@@ -4,7 +4,7 @@ title: Agent Execution Rules
 status: draft
 version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-05
+updated: 2026-09-06
 related_documents:
   - method/CONSTRUCTION-METHOD-v0.2.md
   - method/NAVIGATION-AND-CONTEXT.md
@@ -41,9 +41,10 @@ operations (-63%) and repair loops (-50%) were both substantially lower.
 1. Classify the requested change and identify the responsible semantic
    feature.
 2. Read the repository semantic map if ownership is unclear.
-3. Read the feature manifest and the declared state, transitions, invariants,
-   capabilities, interfaces/effect contracts, tests, and required composition
-   context.
+3. Read the feature manifest—or the semantic map's explicit not-needed
+   rationale for a small/obvious area—and the declared state, transitions,
+   invariants, capabilities, interfaces/effect contracts, tests, and required
+   composition context.
 4. Record the expected modification boundary.
 
 ### Context check
@@ -74,8 +75,10 @@ operations (-63%) and repair loops (-50%) were both substantially lower.
     tests in that order where applicable.
 14. Perform targeted search for known unguarded representations, then
     integration and representative live verification when warranted.
-15. Record available discovery/context metrics, defect classes, and evidence;
-    label unavailable telemetry rather than estimating it.
+15. Record available discovery/context metrics, defect classes, and evidence
+    through the project's existing telemetry authority where one exists;
+    discover capability state at T0 and label unavailable telemetry rather
+    than estimating it.
 16. Stop when acceptance and required verification are complete.
 
 **Edit incrementally, then compile—after sufficient local discovery.** Do not

@@ -4,7 +4,7 @@ title: Navigation and Context Discovery
 status: draft
 version: 0.2.0
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-06
 related_documents:
   - method/CONSTRUCTION-METHOD-v0.2.md
   - method/FEATURE-MANIFESTS.md
@@ -24,7 +24,7 @@ correctness benefits remain EXPERIMENTAL [`HY-SDE-2026-0008`].
 Task
   → Repository semantic map (when ownership is not already unambiguous)
   → Semantic feature
-  → Feature manifest
+  → Feature manifest when required, otherwise the map's not-needed rationale
   → Local state / transitions / invariants / contracts / tests
   → Declared dependencies as needed
   → Smallest authoritative modification
@@ -44,7 +44,8 @@ Before the first change:
 
 1. Classify the request and identify the likely semantic feature.
 2. Read the repository semantic map if ownership is unclear.
-3. Read the feature manifest.
+3. Read the feature manifest, or the repository map's explicit reason that a
+   separate manifest is not needed for this small/obvious area.
 4. Load the declared local state, transitions, invariants, capabilities,
    interfaces/effect contracts, tests, and required composition context.
 5. Record the expected modification boundary.
@@ -142,4 +143,3 @@ Record unexpected reads, undeclared dependencies, cross-boundary edits, and
 manifest corrections in the work handoff. Ordinary expected reads need counts
 or categories only when telemetry is available or the work is a serious
 experiment.
-

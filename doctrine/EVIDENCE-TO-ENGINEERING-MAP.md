@@ -4,7 +4,7 @@ title: Evidence-to-Engineering Map
 status: accepted
 version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-05
+updated: 2026-09-06
 related_documents:
   - doctrine/CONTRADICTIONS-AND-DEPRECATED.md
   - method/CONSTRUCTION-METHOD-v0.2.md
@@ -39,6 +39,7 @@ without new supporting evidence and a recorded reason.
 | Treat physical LOC as a configurable review signal, not semantic truth | RECOMMENDED review guidance | Derived architectural rationale | EV-SDE-2026-0006; DF-SDE-2026-0004 | HY-SDE-2026-0007 | Exact bands are provisional and language/generated-code sensitive; LOC cannot detect duplicate authority. |
 | Context Surface, CER, and Discovery Expansion diagnose unexpected context growth | EXPERIMENTAL | Proposed, not validated | EV-SDE-2026-0006 | HY-SDE-2026-0007; HY-SDE-2026-0008 | Counting unit and denominator must be preregistered; cross-cutting changes legitimately expand. Never gate conformance on CER. |
 | Serious experiments capture durable cumulative telemetry at T0–T6 and leave unavailable metrics missing | REQUIRED evidence practice | No-invention rule supported; checkpoint schedule adopted for prospective trials | EV-HN-2026-0005; EV-SDE-2026-0006; DF-SDE-2026-0004 | — | Environment may expose only a subset; checkpoints cannot retroactively repair missing historical telemetry. |
+| Reuse an existing project/harness telemetry authority, discover capability state at T0, preserve authoritative provider fields adaptively, and distinguish missing from zero | REQUIRED evidence practice | Source/completeness distinction directly evidenced; adaptive preservation is an accepted prospective measurement contract | EV-HN-2026-0005; EV-SDE-2026-0006; DF-SDE-2026-0004 | — | A collector may expose no compatible extension; retain permitted tool-native evidence and record the gap rather than changing a frozen trial schema or creating a parallel store. |
 
 ## How to use this map
 

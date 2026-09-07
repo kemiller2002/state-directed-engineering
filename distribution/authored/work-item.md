@@ -2,7 +2,7 @@
 id:
 title:
 status: proposed
-change_class: semantic | boundary | mechanical-propagation | presentation
+change_classes: [semantic] # one or more; classify consequential sites below
 semantic_feature:
 feature_manifest:
 created:
@@ -17,9 +17,10 @@ instead — do not maintain two parallel work-item stores.
 
 ## Requirement
 
-## Change classification
+## Change classifications
 
-See `../method/CHANGE-CLASSIFICATION.md`. State which class this is and why.
+See `../method/CHANGE-CLASSIFICATION.md`. State which classes apply, which
+consequential sites belong to each, and why.
 
 ## Semantic feature and expected modification boundary
 

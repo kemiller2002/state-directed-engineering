@@ -2,9 +2,9 @@
 id: SDE-CHRONOLOGY-001
 title: State Programming / State-Directed Engineering Chronology
 status: accepted
-version: 0.2.0
+version: 0.2.1
 created: 2026-09-02
-updated: 2026-09-05
+updated: 2026-09-07
 tags: [chronology, history]
 ---
 
@@ -31,6 +31,7 @@ guessed.
 | 2026-09-02 (this migration) | State-Directed Engineering repository bootstrap: State Programming research inventoried and consolidated into SDE evidence/hypothesis/theory/decision records; SDE doctrine (State Programming, State-Directed Engineering, Four-Tier Architecture, Boundary Preservation, Glossary, Evidence-to-Engineering Map, Contradictions register) established; Construction Method v0.1 and supporting method documents scaffolded; ROS work items created for this and follow-on work | `state-directed-engineering` repository, branch `claude/bootstrap-sde-from-helix-0umjmt` |
 | 2026-09-05 14:59:47 | Structural-locality, agent-navigation, and methodology-roadmap notes committed as source material for the next SDE revision | `state-directed-engineering` commit `d1b8d8f`, `Notes/` |
 | 2026-09-05 (WI-0026) | Notes reconciled into SDE/method v0.2: structural-locality doctrine, bounded reasoning candidate theory, semantic-map/feature-manifest contracts, local-first context escalation, greenfield guidance, defect/context telemetry, warning-only structural verification, and distribution package v1.1.0. Claimed navigation/locality benefits remain unvalidated; no greenfield trial result was inferred. | `RP-SDE-2026-0002`; `DF-SDE-2026-0004` |
+| 2026-09-07 (WI-0028) | Independent authoritative-surface review preserved method v0.2 while repairing root agent routing, map-only manifest optionality, adaptive telemetry reuse/capability semantics, and multi-class templates. Published package v1.1.0 remained immutable; package v1.1.1 was prepared for the compatible corrections. | `RP-SDE-2026-0003`; `JR-SDE-2026-0003` |
 
 ## Open dating gaps
 

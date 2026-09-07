@@ -130,3 +130,41 @@ test("canonical Markdown links are rewritten when distributed paths move", () =>
     cleanup(outDir);
   }
 });
+
+test("distributed telemetry guidance preserves adaptive source and capability semantics", () => {
+  const outDir = makeTempDir("sde-build-telemetry-");
+  try {
+    build({ outputDir: outDir });
+    const metrics = fs.readFileSync(path.join(outDir, "reference", "ENGINEERING-METRICS.md"), "utf8");
+    const execution = fs.readFileSync(path.join(outDir, "templates", "execution-log.md"), "utf8");
+    const completion = fs.readFileSync(path.join(outDir, "templates", "completion-report.md"), "utf8");
+
+    assert.match(metrics, /existing telemetry authority/);
+    assert.match(metrics, /supported but unavailable/);
+    assert.match(metrics, /sanctioned extension or sanitized raw\s+layer/);
+    assert.match(execution, /Telemetry capability baseline/);
+    assert.match(completion, /cache-read \/ cache-write/);
+    assert.match(completion, /Time \/ tokens to first valid edit/);
+  } finally {
+    cleanup(outDir);
+  }
+});
+
+test("distributed navigation permits justified map-only areas without requiring empty manifests", () => {
+  const outDir = makeTempDir("sde-build-navigation-");
+  try {
+    build({ outputDir: outDir });
+    const readme = fs.readFileSync(path.join(outDir, "README.md"), "utf8");
+    const construction = fs.readFileSync(path.join(outDir, "method", "CONSTRUCTION-METHOD.md"), "utf8");
+    const manifests = fs.readFileSync(path.join(outDir, "method", "FEATURE-MANIFESTS.md"), "utf8");
+    const workItem = fs.readFileSync(path.join(outDir, "templates", "work-item.md"), "utf8");
+
+    assert.match(readme, /separate manifest is not needed/);
+    assert.match(construction, /map's explicit not-needed rationale/i);
+    assert.match(manifests, /may use the repository map alone/i);
+    assert.match(workItem, /change_classes:/);
+    assert.doesNotMatch(workItem, /^change_class:/m);
+  } finally {
+    cleanup(outDir);
+  }
+});

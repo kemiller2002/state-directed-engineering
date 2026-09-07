@@ -42,5 +42,35 @@
     "title": "Structural locality and agent navigation integration journal",
     "type": "journal",
     "updated": "2026-09-05"
+  },
+  {
+    "author_agent": "OpenAI Codex (GPT-5; exact runtime model identifier not exposed)",
+    "created": "2026-09-06",
+    "evidence_ids": [
+      "EV-SDE-2026-0006"
+    ],
+    "hypothesis_ids": [
+      "HY-SDE-2026-0007",
+      "HY-SDE-2026-0008"
+    ],
+    "id": "JR-SDE-2026-0003",
+    "path": "research/journals/JR-SDE-2026-0003--v0.2-authoritative-surface-review.md",
+    "related_mission": "WI-0028",
+    "related_package": "RP-SDE-2026-0003",
+    "research_area": "state-directed-engineering",
+    "status": "accepted",
+    "tags": [
+      "journal",
+      "sde-v0.2",
+      "review",
+      "navigation",
+      "telemetry"
+    ],
+    "theory_ids": [
+      "TH-SDE-2026-0005"
+    ],
+    "title": "SDE v0.2 authoritative-surface review journal",
+    "type": "journal",
+    "updated": "2026-09-07"
   }
 ]

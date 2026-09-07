@@ -6,8 +6,10 @@ Before engineering a change:
 
 1. Identify the semantic feature; read the project's repository semantic map
    if ownership is unclear.
-2. Read the feature manifest and declared local context. If the project does
-   not have these yet, use `templates/repository-semantic-map.md` and
+2. Read the feature manifest and declared local context. If the semantic map
+   explicitly says a separate manifest is not needed for a small/obvious area,
+   use that map entry as the routing declaration. If a nontrivial project has
+   no usable map/manifest yet, use `templates/repository-semantic-map.md` and
    `templates/feature-manifest.md` without inventing feature boundaries.
 3. Read `method/CONSTRUCTION-METHOD.md` and classify the requested work using
    `method/CHANGE-CLASSIFICATION.md`.

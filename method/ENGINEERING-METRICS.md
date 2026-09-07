@@ -4,7 +4,7 @@ title: Engineering Metrics
 status: draft
 version: 0.2.0
 created: 2026-09-02
-updated: 2026-09-05
+updated: 2026-09-06
 related_documents:
   - doctrine/GLOSSARY.md
   - method/AGENT-EXECUTION-RULES.md
@@ -43,8 +43,33 @@ can capture reliably and what answers the work's decision question.
 - Start/end timestamps and elapsed duration
 - Input, output, cache-read, cache-write, and total tokens
 - Cost and tool calls
-- Time/tokens to first valid edit and verified completion
+- Tokens consumed before first edit and before successful verification
+- Time to first valid change and verified completion
 - Build attempts, failed builds, test attempts, and failed tests
+
+## Telemetry authority and adaptive capture (REQUIRED)
+
+Reuse an adopting project's existing telemetry authority—such as ROS,
+orchestrator/harness events, CI, build/test logs, or another established
+collector—rather than creating an incompatible parallel metric store. The SDE
+distribution defines measurement semantics and templates; it is not itself a
+runtime telemetry collector.
+
+At T0, discover and record which requested capabilities are available. Keep
+`zero`, `not applicable`, `unsupported`, `supported but unavailable`, and
+`not captured` distinct using the host system's vocabulary. A missing value
+must never be normalized to zero. For each reported metric preserve its unit,
+scope, aggregation, evidence class, and completeness window so that a partial
+session count cannot be mistaken for a whole-run total.
+
+Capture additional authoritative provider/runtime fields adaptively when the
+environment exposes them, even when this document did not anticipate the
+field. Use the established collector's sanctioned extension or sanitized raw
+layer when one exists; do not alter a frozen experiment schema after T0 merely
+to improve apparent coverage. If no compatible field exists, retain the
+tool-native evidence where permitted and record the schema/capability gap.
+Never collect prompts, responses, source contents, credentials, or personal
+data merely to increase metric coverage.
 
 ## Context-acquisition telemetry
 
@@ -53,6 +78,7 @@ reliable—capture:
 
 - search operations and symbol searches;
 - repository-wide searches;
+- files inspected before first edit and total;
 - declared-boundary files read;
 - declared-dependency files read;
 - undeclared-dependency files read;

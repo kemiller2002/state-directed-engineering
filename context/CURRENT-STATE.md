@@ -8,7 +8,12 @@ record is
 It adds structural locality, bounded reasoning scope, repository semantic-map
 and feature-manifest contracts, local-first context escalation, greenfield
 guidance, explicit defect/context telemetry, and warning-only portable
-structural review. The npm distribution is v1.1.0 and carries method v0.2.
+structural review. Package v1.1.0 published that initial integration. The
+`WI-0028` follow-up review, recorded in
+`research/packages/RP-SDE-2026-0003--sde-v0.2-authoritative-surface-review.md`,
+retains method v0.2 and prepares package v1.1.1 for compatible routing,
+telemetry, and template-consistency corrections. V1.1.1 is not published by
+this repository mission.
 
 Construction Method v0.1 and the original accepted HelixNote evidence remain
 frozen historical records. The three source notes remain unchanged.
@@ -28,7 +33,7 @@ frozen historical records. The three source notes remain unchanged.
 - `TH-SDE-2026-0005` treats bounded reasoning scope as a candidate theory,
   Medium (0.50). Locality and manifest outcome hypotheses remain unresolved,
   Low confidence (`HY-SDE-2026-0007`, `0008`).
-- The distribution suite passes 30 tests. The default structural scan inspects
+- The distribution suite passes 32 tests. The default structural scan inspects
   25 source files and reports one warning: `tools/ros_cli.mjs`, 1,085 physical
   lines, strong-review band. The warning is captured as `WI-0027`; it is not
   proof of nonconformance.
@@ -44,6 +49,8 @@ frozen historical records. The three source notes remain unchanged.
 
 ## Work state
 
+- `WI-0028` completed the independent v0.2 authoritative-surface review; its
+  research package and journal preserve validation and missing-metric evidence.
 - `WI-0019` remains ready: execute the first non-HelixNote validation after a
   dedicated scoping and preregistration pass.
 - `WI-0027` is captured, low priority: review `tools/ros_cli.mjs`

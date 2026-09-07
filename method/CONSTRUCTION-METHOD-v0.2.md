@@ -4,7 +4,7 @@ title: State-Directed Engineering — Software Construction Method v0.2
 status: draft
 version: 0.2.0
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-06
 related_documents:
   - doctrine/STATE-DIRECTED-ENGINEERING.md
   - doctrine/STRUCTURAL-LOCALITY.md
@@ -33,7 +33,7 @@ UNDERSTAND AND CLASSIFY REQUEST
     ↓
 IDENTIFY RESPONSIBLE SEMANTIC FEATURE
     ↓  (use repository semantic map when ownership is unclear)
-READ FEATURE MANIFEST
+READ FEATURE MANIFEST, OR THE MAP'S EXPLICIT NOT-NEEDED RATIONALE
     ↓
 LOAD SMALLEST SUFFICIENT DECLARED LOCAL CONTEXT
     ↓  (state, transitions, invariants, capabilities, contracts, tests,
@@ -73,7 +73,9 @@ The flow is a dependency order, not a claim that every change executes every
 box exactly once. If declared local context is insufficient before the first
 edit, use the context-escalation contract immediately. If compilation or a
 later check exposes an undeclared obligation, return to the same contract and
-record the expansion.
+record the expansion. A small/obvious area may use the repository map as its
+complete routing declaration when `method/FEATURE-MANIFESTS.md` permits it; do
+not create an empty manifest merely to satisfy the diagram.
 
 ## Why local-first and mechanical-first do not conflict
 
